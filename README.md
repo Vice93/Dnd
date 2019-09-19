@@ -1,1 +1,5 @@
 # Dnd
+
+Requirements:
+ - NodeJS
+ - MySql
