@@ -1,29 +1,29 @@
 /* Imports */
+const express = require('express')
+const cors = require('cors')
+const bodyParser = require('body-parser')
+const logger = require('morgan')
+const appenv = require('./appenv.js')
+
+const app = express()
+app.use(cors())
+
+const router = express.Router()
 const mysql = require('./database/initPool.js')
-const LINQ = require('node-linq').LINQ
-const path = require('path')
 
-let files = ['test.txt', 'choni.txt', 'legacy.zip', 'secrets.txt', 'etc.rar'];
-let arr = new LINQ(files)
-  .Where((file) => { return path.extname(file) === '.txt' })
-  .OrderBy((file) => { return file })
-  .ToArray()
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
+app.use(logger(appenv.env))
 
-arr.forEach(elem => {
-  console.log("Elem: " + elem)
+
+router.get('/test', (req, res) => {
+  mysql('users').select().then((data) => {
+    return res.json({ success: true, data: data })
+  }).catch((err) => {
+    return res.json({ success: false, err: err })
+  })
 })
 
+app.use('/api', router)
 
-let bool = new LINQ(arr).Any((file) => { return file.includes('test') })
-
-console.log(bool);
-
-let first = new LINQ(arr).First((file) => { return file.includes('test') })
-
-console.log(first);
-
-let notFound = new LINQ(arr).First((file) => { return file.includes('error') })
-
-console.log(notFound)
-
-mysql('users').select().then((data) => console.log(data))
+app.listen(appenv.api_port, () => console.log(`Listening on port ${appenv.api_port}`))
