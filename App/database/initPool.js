@@ -1,7 +1,7 @@
-const mysql = require('mysql');
-const util = require('util')
+//const mysql = require('mysql');
+//const util = require('util')
 const env = require('../appenv');
-
+/*
 // Create the pool using env settings
 const pool = mysql.createPool({
   host: env.db_host,
@@ -10,7 +10,22 @@ const pool = mysql.createPool({
   password: env.db_password,
   database: env.db_name
 })
-
+*/
+const knex = require('knex')({
+  client: 'mysql',
+  connection: {
+    host: env.db_host,
+    user: env.db_user,
+    password: env.db_password,
+    database: env.db_name,
+    port: env.db_port
+  },
+  pool: { 
+    min: 0, 
+    max: 10
+  }
+})
+/*
 pool.on('acquire', function (conn) {
   console.log('Connection %d acquired', conn.threadId);
 })
@@ -47,6 +62,6 @@ pool.getConnection((err, conn) => {
 
 // Promisify the query to allow async calls
 pool.query = util.promisify(pool.query)
-
+*/
 // Export the pool to make the connection available elsewhere
-module.exports = pool
+module.exports = knex

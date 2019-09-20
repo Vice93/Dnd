@@ -26,9 +26,4 @@ let notFound = new LINQ(arr).First((file) => { return file.includes('error') })
 
 console.log(notFound)
 
-
-mysql.query('select * from users', (err, res, fields) => {
-  if(err)
-    console.log(err)
-  console.log(res)
-})
+mysql('users').select().then((data) => console.log(data))
