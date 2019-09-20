@@ -1,12 +1,18 @@
 /* Imports */
 const express = require('express')
-const cors = require('cors')
+let cors = require('cors')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
 const appenv = require('./appenv.js')
 
 const app = express()
-app.use(cors())
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    '<other ips you want to allow>',
+  ],
+  optionsSuccessStatus:200
+}));
 
 const router = express.Router()
 const mysql = require('./database/initPool.js')
