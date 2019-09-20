@@ -13,3 +13,7 @@ Installation:
  
 Update packages:
  - Run Setup.bat
+
+
+Run the app:
+ - npm start (in /App/ folder)
