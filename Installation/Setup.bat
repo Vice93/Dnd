@@ -11,4 +11,4 @@ cd ..
 cd App
 
 echo Trying to install app modules...
-npm install && cd .. && cd Installation && echo Modules Installed && pause
+npm install && cd client && npm install && cd .. && cd .. && cd Installation && echo Modules Installed && pause
