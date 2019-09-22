@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {Navbar, Nav, Button, Form} from 'react-bootstrap';
+import {Navbar, Nav} from 'react-bootstrap';
 import Sidebar from './Sidebar'
 import '../css/main.css'
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-export default class MainNavbar extends Component {
+class MainNavbar extends Component {
 
   render(){
     return(
@@ -15,11 +15,12 @@ export default class MainNavbar extends Component {
             <Link to="/" className="nav-link">Home</Link>
             <Link to="/test" className="nav-link">Test</Link>
           </Nav>
-          <Form inline>
-            <Button variant="outline-info" href="/login">Login</Button>
-          </Form>
+          
+          <Link to="/login" type="button" className="btn btn-primary">Login</Link>
         </Navbar>
       </div>
     )
   }
 }
+
+export default withRouter(MainNavbar);
