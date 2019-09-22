@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import {Navbar, Nav, Button, Form, FormControl} from 'react-bootstrap';
+import {Navbar, Nav, Button, Form} from 'react-bootstrap';
 import Sidebar from './Sidebar'
 import '../css/main.css'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Test from '../Components/Test';
 
 export default class MainNavbar extends Component {
 
   render(){
     return(
-      <div className="navbar-wrapper">
-        <Sidebar />
-        <Navbar bg="dark" variant="dark" fixed="top" className="main-navbar">
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-info">Search</Button>
-          </Form>
-        </Navbar>
+      <Router>
+        <div className="navbar-wrapper">
+          <Sidebar />
+          <Navbar bg="dark" variant="dark" fixed="top" className="main-navbar">
+            <Nav className="mr-auto">
+              <Link to="/">Home</Link>
+              <Link to="/test">Test</Link>
+            </Nav>
+            <Form inline>
+              <Button variant="outline-info" href="/login">Login</Button>
+            </Form>
+          </Navbar>
       </div>
+      </Router>
+      
     )
   }
 }
