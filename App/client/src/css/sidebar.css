@@ -1,0 +1,23 @@
+#sidebar, .MuiBackdrop-root, .MuiPaper-root {
+  top: 56px !important;
+}
+
+.icon-color {
+  color: white;
+}
+
+.MuiList-padding {
+  padding: 0 !important;
+}
+
+.sidebar-item {
+  user-select: none;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+a, a:hover, a:focus {
+  color: #000000;
+  text-decoration: none !important;
+}

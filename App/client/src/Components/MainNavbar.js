@@ -9,8 +9,8 @@ class MainNavbar extends Component {
   render(){
     return(
       <div className="navbar-wrapper">
-        <Sidebar />
         <Navbar bg="dark" variant="dark" fixed="top" className="main-navbar">
+          <Sidebar />
           <Nav className="mr-auto">
             <Link to="/" className="nav-link">Home</Link>
           </Nav>
