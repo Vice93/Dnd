@@ -1,3 +1,7 @@
 .navbar-wrapper {
-  margin-left: 48px;
+  margin-left: 64px;
+}
+
+.main-content {
+  margin: 20px 0 0 80px;
 }

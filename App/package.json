@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "test",
-    "start": "concurrently \"node app.js\" \"cd client && npm start\""
+    "start": "concurrently \"node app.js\" \"cd client && npm start\"",
+    "ud": "npm install && cd client && npm install"
   },
   "repository": {
     "type": "git",
