@@ -15,9 +15,9 @@ module.exports = (router) => {
         element.testFunction()
       })
       return res.json({ success: true, data: users })
-    }).catch((err) => {
-      console.log(err)
-      return res.json({ success: false, err: err })
+    }).catch((ex) => {
+      console.log(ex)
+      return res.json({ success: false, err: ex })
     })
   })
 
