@@ -80,8 +80,8 @@ export default class AboutUs extends Component {
                                 alt="Third slide"
                             />
                             <Carousel.Caption>
-                                <h3>Third slide label</h3>
-                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                <h3>Dragons are but a click away!</h3>
+                                <p>Guaranteed nat 20's</p>
                             </Carousel.Caption>
                         </Carousel.Item>
                     </Carousel>
