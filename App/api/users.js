@@ -9,13 +9,14 @@ module.exports = (router) => {
   // This one now processes GET requests on the endpoint: 'http://localhost:3001/api/users/'
   router.get('/', (req,res) => {
     // Use mysql to query 'users' table, select everything then map the result to our User object
-    mysql('users').select().map((user) => new User(user)).then((data) => {
-      data.forEach(element => {
+    mysql('users').select().map((user) => new User(user)).then((users) => {
+      users.forEach(element => {
         // We can use functions defined on the model if we want to
         element.testFunction()
-      });
-      return res.json({ success: true, data: data })
+      })
+      return res.json({ success: true, data: users })
     }).catch((err) => {
+      console.log(err)
       return res.json({ success: false, err: err })
     })
   })
