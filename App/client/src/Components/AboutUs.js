@@ -30,23 +30,21 @@ export default class AboutUs extends Component {
                             <h2>
                                 Features
                             </h2>
-                            <p>
-                                <li>
-                                    A seamless character Creator
-                                    <ul>
-                                        - Overview over character sheet
-                                    </ul>
-                                </li>
-                                <li>
-                                    Inventory management
-                                    <ul>
-                                        - keep track of all your stuff with automatic weight & encumberance
-                                    </ul>
-                                </li>
-                                <li>
-                                    Initiative & Combat Tracking
-                                </li>
-                            </p>
+                            <li>
+                                A seamless character Creator
+                                <ul>
+                                    - Overview over character sheet
+                                </ul>
+                            </li>
+                            <li>
+                                Inventory management
+                                <ul>
+                                    - keep track of all your stuff with automatic weight & encumberance
+                                </ul>
+                            </li>
+                            <li>
+                                Initiative & Combat Tracking
+                            </li>
                         </Col>
                     </Row>
                     <Carousel>
