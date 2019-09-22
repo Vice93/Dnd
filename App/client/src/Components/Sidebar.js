@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import 'font-awesome/css/font-awesome.css';
 
 export default class Sidebar extends Component {
   
@@ -8,7 +9,7 @@ export default class Sidebar extends Component {
     return(
       <SideNav
         onSelect={(selected) => {
-            // Add your code here
+            console.log(selected)
         }}>
       <SideNav.Toggle />
         <SideNav.Nav defaultSelected="home">
