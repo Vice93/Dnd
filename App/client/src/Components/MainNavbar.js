@@ -14,6 +14,7 @@ class MainNavbar extends Component {
           <Nav className="mr-auto">
             <Link to="/" className="nav-link">Home</Link>
             <Link to="/test" className="nav-link">Test</Link>
+            <Link to="/about-us" className='nav-link'>About us</Link>
           </Nav>
           
           <Link to="/login" type="button" className="btn btn-primary">Login</Link>
