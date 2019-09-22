@@ -18,12 +18,12 @@ app.use(cors({
     '<other ips you want to allow>',
   ],
   optionsSuccessStatus:200 // Optional, but you can define http status code for success here, 200 is the standard
-}));
+}))
 /** 
 * Use bodyparser to parse the requests/responses we send. We are mostly using json, but some formdata is sent as urlencoded so we support both these. 
 * There are also various more, but we wont be using those 
 */
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(logger(appenv.env))
 /**
