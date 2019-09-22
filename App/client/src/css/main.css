@@ -3,5 +3,15 @@
 }
 
 .main-content {
-  margin: 20px 0 0 80px;
+  margin: 64px 0 0 80px;
+}
+
+.main-navbar {
+  margin-left: 64px;
+  user-select: none;
+}
+
+.main-sidenav {
+  position: fixed !important;
+  user-select: none;
 }

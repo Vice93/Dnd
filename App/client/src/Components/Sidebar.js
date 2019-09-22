@@ -7,7 +7,7 @@ export default class Sidebar extends Component {
   
   render(){
     return(
-      <SideNav
+      <SideNav className="main-sidenav"
         onSelect={(selected) => {
             console.log(selected)
         }}>

@@ -9,7 +9,7 @@ export default class MainNavbar extends Component {
     return(
       <div className="navbar-wrapper">
         <Sidebar />
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" fixed="top" className="main-navbar">
           <Nav className="mr-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#features">Features</Nav.Link>
