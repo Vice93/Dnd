@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
-import { Card, Button, Container, Row, Col } from 'react-bootstrap';
+import { Card, Button, Container, Row, Col, Collapse } from 'react-bootstrap';
+import Jumbotron from "react-bootstrap/Jumbotron";
 
 export default class Test extends Component {
 
   render(){
     return(
         <Container>
+          <Jumbotron>
+            <h1>Welcome to RollHub!</h1>
+            <p>
+              An Online suite for all things tabletoppy
+            </p>
+            <p>
+              <Button variant="primary">Learn more</Button>
+            </p>
+          </Jumbotron>
           <Row>
             <Col>
               <Card style={{ width: '18rem' }}>

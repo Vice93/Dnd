@@ -14,6 +14,7 @@ export default class MainNavbar extends Component {
           <Nav className="mr-auto">
             <Link to="/" className="nav-link">Home</Link>
             <Link to="/test" className="nav-link">Test</Link>
+            <Link to="/about-us" className='nav-link'>About us</Link>
           </Nav>
           <Form inline>
             <Button variant="outline-info" href="/login">Login</Button>
