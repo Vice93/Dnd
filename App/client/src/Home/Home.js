@@ -10,6 +10,8 @@ import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from "@material-ui/core";
 import Login from '../Components/Login';
 import Register from "../Components/Register";
+import ForgotPassword from "../Components/ForgotPassword";
+
 
 const theme = createMuiTheme({
   spacing: 4,
@@ -40,6 +42,7 @@ export default class Home extends Component {
               <Route path="/about-us" component={AboutUs}/>} />
               <Route path="/login" component={Login}/>} />
               <Route path="/register" component={Register}/>} />
+              <Route path="/forgot-password" component={ForgotPassword}/>} />
             </Switch>
           </ContentContainer>
         </BrowserRouter>
