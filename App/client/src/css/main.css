@@ -11,11 +11,24 @@
   text-decoration: none !important;
 }*/
 
+
+/* Login */
 .login-container {
   text-align: center;
   box-shadow: 0px 0px 4px 1px rgba(39, 38, 38, 0.2);
   border-radius: 2%;
-  width: 400px;
-  padding: 20px 40px 40px 20px;
+  width: 250px;
+  padding: 30px 20px 30px 20px;
+}
+
+/* Login */
+.signin-button {
+  margin-top: 20px !important;
+  margin-bottom: 10px !important;
+}
+
+/* Login */
+.icon-size {
+  font-size: 4rem !important;
 }
 
