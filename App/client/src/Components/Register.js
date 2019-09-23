@@ -25,7 +25,7 @@ export default class Register extends Component {
                     <TextField variant="outlined" margin="normal" required fullWidth name="password"
                                label="Password" type="password" id="password" autoComplete="current-password"/>
                     <TextField variant="outlined" margin="normal" required fullWidth name="confirmpassword"
-                               label="Confirm Password" type="password" id="password" autoComplete="current-password"/>
+                               label="Confirm Password" type="password" id="confirmpassword" autoComplete="current-password"/>
                     <Button type="submit" fullWidth variant="contained" color="primary">
                         Register
                     </Button>

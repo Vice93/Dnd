@@ -37,7 +37,7 @@ export default class Login extends Component {
               </Link>
             </Grid>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link to={"register"} variant="body2">
                 No account?
               </Link>
             </Grid>
