@@ -16,7 +16,7 @@ export default class Register extends Component {
             //Register form
             <div className="login-container">
                 <Icon>
-                    <Face/>
+                    <Face className="icon-size"/>
                 </Icon>
                 <Typography component="h1">Register</Typography>
                 <form>
@@ -26,7 +26,7 @@ export default class Register extends Component {
                                label="Password" type="password" id="password" autoComplete="current-password"/>
                     <TextField variant="outlined" margin="normal" required fullWidth name="confirmpassword"
                                label="Confirm Password" type="password" id="confirmpassword" autoComplete="current-password"/>
-                    <Button type="submit" fullWidth variant="contained" color="primary">
+                    <Button className="signin-button" type="submit" fullWidth variant="contained" color="primary">
                         Register
                     </Button>
                     <Grid container>
