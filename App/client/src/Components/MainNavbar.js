@@ -34,7 +34,7 @@ export default function MainNavbar() {
             <Button component={Link} to="/" color="default">Home</Button>
           </Grid>
           <Grid item xs={1}>
-            <Button component={Link} to="/login" variant="contained" color="secondary">Login</Button>
+            <Button component={Link} to="/Login" variant="contained" color="secondary">Login</Button>
           </Grid>
         </Grid>
       </Toolbar>
