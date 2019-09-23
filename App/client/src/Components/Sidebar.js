@@ -1,14 +1,8 @@
 import React from 'react';
 import '../css/sidebar.css';
 import 'font-awesome/css/font-awesome.css';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import { makeStyles } from '@material-ui/styles';
+import {Drawer,Button,List,Divider,ListItem,ListItemIcon,ListItemText} from '@material-ui/core';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({

@@ -5,26 +5,41 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Test from '../Components/Test';
 import Test2 from '../Components/Test2';
 import AboutUs from '../Components/AboutUs';
+import ContentContainer from '../Components/ContentContainer';
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from "@material-ui/core";
 
-class Home extends Component {
-// https://material-ui.com/styles/api/ 
-// Implement ThemeProvider
-  render(){
-    return(
-      <div>
+const theme = createMuiTheme({
+  spacing: 4,
+  palette: {
+    primary: {
+      main: "#007bff",
+    }
+  },
+  white: {
+    primary: {
+      
+    }
+  }
+});
+
+export default class Home extends Component {
+  // https://material-ui.com/styles/api/ 
+  // Implement ThemeProvider
+  render() {
+    return (
+      <ThemeProvider theme={theme}>
         <BrowserRouter>
           <MainNavbar />
-          <div className="main-content">
+          <ContentContainer contentRight={<p>Optional Content right side here</p>}>
             <Switch>
               <Route exact path="/" component={Test} />}/>
               <Route path="/test" component={Test2} />} />
-              <Route path="/about-us" component={AboutUs}/>} />
+              <Route path="/about-us" component={AboutUs} />} />
             </Switch>
-          </div>
+          </ContentContainer>
         </BrowserRouter>
-      </div>
+      </ThemeProvider>
     )
   }
 }
-
-export default Home;
