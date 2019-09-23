@@ -7,10 +7,10 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import Link from "@material-ui/core/Link";
+import {Link} from 'react-router-dom'
 
 export default class Register extends Component {
-
+        //Todo: Add link back to register
     render() {
         return (
             //Register form
@@ -31,7 +31,7 @@ export default class Register extends Component {
                     </Button>
                     <Grid container>
                         <Grid item xs>
-                            <Link to={"#"} variant="body2">
+                            <Link to={"login"} variant="body2">
                                 Already Registered? Log in here.
                             </Link>
                         </Grid>
