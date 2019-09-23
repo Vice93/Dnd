@@ -6,7 +6,7 @@
   user-select: none;
 }
 
-.main-sidenav {
-  position: fixed !important;
-  user-select: none;
-}
+/*a, a.Mui-hover, a.Mui-focus {
+  color: #000000;
+  text-decoration: none !important;
+}*/

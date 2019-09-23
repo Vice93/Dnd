@@ -8,7 +8,7 @@ module.exports = (router) => {
   // For instance, this one listens on the route defined in app.js ('/api/users'), and here we can specify further paths
   // This one now processes GET requests on the endpoint: 'http://localhost:3001/api/users/'
   router.get('/', (req,res) => {
-    // Use mysql to query 'users' table, select everything then map the result to our User object
+    //Use mysql to query 'users' table, select everything then map the result to our User object
     mysql('users').select().map((user) => new User(user)).then((users) => {
       users.forEach(element => {
         // We can use functions defined on the model if we want to
@@ -19,6 +19,7 @@ module.exports = (router) => {
       console.log(ex)
       return res.json({ success: false, err: ex })
     })
+    return res.json({success:true, data: null})
   })
 
   return router
