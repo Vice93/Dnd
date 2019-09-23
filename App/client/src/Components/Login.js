@@ -16,7 +16,7 @@ export default class Login extends Component {
       // Login form 
       <div className="login-container">
         <Icon>
-          <Face/>
+          <Face className="icon-size"/>
         </Icon> 
         <Typography component="h1">Sign in</Typography>
         <form>
@@ -24,7 +24,7 @@ export default class Login extends Component {
             label="Email Address" name="email" autoComplete="email" autoFocus />
           <TextField variant="outlined" margin="normal" required fullWidth name="password"
             label="Password" type="password" id="password" autoComplete="current-password"/>
-          <Button type="submit" fullWidth variant="contained" color="primary">
+          <Button className="signin-button" type="submit" fullWidth variant="contained" color="primary">
             Sign in 
           </Button>
           <Grid container>
@@ -35,7 +35,7 @@ export default class Login extends Component {
             </Grid>
             <Grid item xs>
               <Link href="#" variant="body2">
-                Don't have an account?
+                No account?
               </Link>
             </Grid>
           </Grid>
