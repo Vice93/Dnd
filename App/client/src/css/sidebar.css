@@ -1,5 +1,5 @@
-#sidebar, .MuiBackdrop-root, .MuiPaper-root {
-  top: 56px !important;
+#sidebar, .MuiBackdrop-root, .MuiDrawer-paper {
+  top: 64px !important;
 }
 
 .icon-color {
@@ -15,9 +15,4 @@
   color: black;
   margin: 0;
   padding: 0;
-}
-
-a, a:hover, a:focus {
-  color: #000000;
-  text-decoration: none !important;
 }

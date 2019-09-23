@@ -29,11 +29,6 @@ export default function Sidebar() {
 
     setState({ ...state, isOpen: open });
   };
-  const handleRedirect = (url) => {
-    if(window.location.pathname !== url) {
-      this.props.history.push(url)
-    }
-  }
 
   const sideList = () => (
     <div
@@ -43,29 +38,28 @@ export default function Sidebar() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        <Link to="/test" className="sidebar-item">
-          <ListItem button>
-            <ListItemIcon><i className="fa fa-fw fa-apple" style={{ fontSize: '1.75em' }} /></ListItemIcon>
-            <ListItemText primary="Test" />
-          </ListItem>
-        </Link>
+        <ListItem button component={Link} to="/test">
+          <ListItemIcon><i className="fa fa-fw fa-apple" style={{ fontSize: '1.75em' }} /></ListItemIcon>
+          <ListItemText primary="Test" />
+        </ListItem>
       </List>
       <List>
-        <Link to="/about-us" className="sidebar-item">
-          <ListItem button className="sidebar-item">
-            <ListItemIcon><i className="fa fa-fw fa-apple" style={{ fontSize: '1.75em' }} /></ListItemIcon>
-            <ListItemText primary="About us" />
-          </ListItem>
-        </Link>
+        <ListItem button component={Link} to="/about-us">
+          <ListItemIcon><i className="fa fa-fw fa-apple" style={{ fontSize: '1.75em' }} /></ListItemIcon>
+          <ListItemText primary="About us" />
+        </ListItem>
       </List>
       <Divider />
+      {
+        //Dette er default oppsett av "Link buttons". Import typen du ønsker fra @material-ui/core/styles, f.eks.
+        //Button, og så setter man ' component={Link} to="/path" ' som attributt på elementet
+        //F.eks: <Button component={Link} to="/path">Tekst</Button>, funker med alle material elementer som kan være button, link etc
+      }
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text) => (
-          <ListItem button key={text}>
-            <ListItemIcon><i className="fa fa-fw fa-apple" style={{ fontSize: '1.75em' }} /></ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button component={Link} to="/path">
+          <ListItemIcon><i className="fa fa-fw fa-apple" style={{ fontSize: '1.75em' }} /></ListItemIcon>
+          <ListItemText primary="En tekst her" />
+        </ListItem>
       </List>
     </div>
   );
