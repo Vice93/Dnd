@@ -7,19 +7,31 @@ import Test2 from '../Components/Test2';
 import AboutUs from '../Components/AboutUs';
 import ContentContainer from '../Components/ContentContainer';
 import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from "@material-ui/core";
+import { createMuiTheme } from "@material-ui/core/styles";
+import { CssBaseline } from "@material-ui/core";
 import Login from '../Components/Login';
 
 const theme = createMuiTheme({
-  spacing: 4,
   palette: {
     primary: {
-      main: "#007bff",
-    }
-  },
-  white: {
-    primary: {
-      
+      main: '#212121',
+      light: '#484848',
+      dark: '#000',
+      contrastText: '#fff'
+    },
+    secondary: {
+      main: '#aa00ff',
+      light: '#e254ff',
+      dark: '#7200ca',
+      contrastText: '#fff'
+    },
+    contrastText: "#fff",
+    background: {
+      default: "#484848",
+      paper: "#484848"
+    },
+    iconColor: {
+      color: "#fff"
     }
   }
 });
@@ -30,6 +42,7 @@ export default class Home extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <BrowserRouter>
           <MainNavbar />
           <ContentContainer contentRight={<p>Optional Content right side here</p>}>

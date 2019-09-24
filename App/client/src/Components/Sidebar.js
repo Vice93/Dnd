@@ -1,18 +1,19 @@
 import React from 'react';
 import '../css/sidebar.css';
 import 'font-awesome/css/font-awesome.css';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, useTheme } from '@material-ui/styles';
 import {Drawer,Button,List,Divider,ListItem,ListItemIcon,ListItemText} from '@material-ui/core';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   list: {
-    width: 250,
+    width: 250
   }
 });
 
 export default function Sidebar() {
   const classes = useStyles();
+  const theme = useTheme();
   const [state, setState] = React.useState({
     isOpen: false
   });
@@ -33,7 +34,7 @@ export default function Sidebar() {
     >
       <List>
         <ListItem button component={Link} to="/test">
-          <ListItemIcon><i className="fa fa-fw fa-apple" style={{ fontSize: '1.75em' }} /></ListItemIcon>
+          <ListItemIcon className={theme.palette.iconColor}><i className="fa fa-fw fa-apple" style={{ fontSize: '1.75em' }} /></ListItemIcon>
           <ListItemText primary="Test" />
         </ListItem>
       </List>

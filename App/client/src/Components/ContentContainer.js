@@ -7,8 +7,7 @@ const useStyles = makeStyles(theme => ({
     height: '100%',
     width: '90%',
     border: '1px solid',
-    padding: '36px',
-    color: theme.primary
+    padding: '36px'
   }
 }));
 
@@ -17,7 +16,6 @@ export default function ContentContainer(props) {
 
   return (
     <Container className={classes.container}>
-      <div id="TESTDIV">TEST</div>
       {props.children}
       {props.contentRight}
     </Container>
