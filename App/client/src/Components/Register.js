@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import '../css/main.css'
 
-import Icon from '@material-ui/core/Icon';
-import Face from '@material-ui/icons/Face';
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
+import {Icon} from '@material-ui/core';
+import {Face} from '@material-ui/icons';
+import {Typography} from "@material-ui/core";
+import {TextField} from "@material-ui/core";
+import {Button} from "@material-ui/core";
+import {Grid} from "@material-ui/core";
 import {Link} from 'react-router-dom'
 
 export default class Register extends Component {

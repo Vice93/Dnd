@@ -19,6 +19,7 @@
   border-radius: 2%;
   width: 250px;
   padding: 30px 20px;
+  background-color: rgba(3, 3, 3, 0.03);
 }
 
 /* Login */
