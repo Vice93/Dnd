@@ -50,7 +50,7 @@ class Login extends Component {
                 </Button>
               </Grid>
               <Grid item xs>
-              <Button className={classes.button} type="submit" color="secondary" component={Link} to="/register">
+                <Button className={classes.button} type="submit" color="secondary" component={Link} to="/register">
                   No account?
                 </Button>
               </Grid>
