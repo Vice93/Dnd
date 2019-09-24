@@ -3,6 +3,7 @@ import '../css/sidebar.css';
 import 'font-awesome/css/font-awesome.css';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import {Drawer,Button,List,Divider,ListItem,ListItemIcon,ListItemText} from '@material-ui/core';
+import {AccountCircle} from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -34,13 +35,17 @@ export default function Sidebar() {
     >
       <List>
         <ListItem button component={Link} to="/test">
-          <ListItemIcon className={theme.palette.iconColor}><i className="fa fa-fw fa-apple" style={{ fontSize: '1.75em' }} /></ListItemIcon>
+          <ListItemIcon>
+            <AccountCircle style={theme.palette.iconColor} />
+          </ListItemIcon>
           <ListItemText primary="Test" />
         </ListItem>
       </List>
       <List>
         <ListItem button component={Link} to="/about-us">
-          <ListItemIcon><i className="fa fa-fw fa-apple" style={{ fontSize: '1.75em' }} /></ListItemIcon>
+          <ListItemIcon>
+            <AccountCircle style={theme.palette.iconColor} />
+          </ListItemIcon>
           <ListItemText primary="About us" />
         </ListItem>
       </List>
@@ -52,8 +57,10 @@ export default function Sidebar() {
       }
       <List>
         <ListItem button component={Link} to="/path">
-          <ListItemIcon><i className="fa fa-fw fa-apple" style={{ fontSize: '1.75em' }} /></ListItemIcon>
-          <ListItemText primary="En tekst her" />
+          <ListItemIcon>
+            <AccountCircle style={theme.palette.iconColor} />
+          </ListItemIcon>
+          <ListItemText color="secondary" primary="En tekst her" />
         </ListItem>
       </List>
     </div>
