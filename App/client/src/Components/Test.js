@@ -1,77 +1,142 @@
 import React, { Component } from 'react';
+import ContentContainer from '../Components/ContentContainer';
+import {Button,CardActionArea,CardActions,Typography,Card, CardContent, Container, CardMedia} from '@material-ui/core';
+import Test2 from '../Components/Test2';
+import { makeStyles } from '@material-ui/styles';
 
-export default class Test extends Component {
-
-  render(){
-    return(
-        <div>Må ha nytt innhold</div>
-        // <Container>
-        //   <Jumbotron>
-        //     <h1>Welcome to RollHub!</h1>
-        //     <p>
-        //       An Online suite for all things tabletoppy
-        //     </p>
-        //     <p>
-        //       <Button variant="primary">Learn more</Button>
-        //     </p>
-        //   </Jumbotron>
-        //   <Row>
-        //     <Col>
-        //       <Card style={{ width: '18rem' }}>
-        //         <Card.Img variant="top" src="logo512.png" />
-        //         <Card.Body>
-        //           <Card.Title>Card Title</Card.Title>
-        //           <Card.Text>
-        //             Some quick example text to build on the card title and make up the bulk of
-        //             the card's content.
-        //           </Card.Text>
-        //           <Button variant="primary">Go somewhere</Button>
-        //         </Card.Body>
-        //       </Card>
-        //     </Col>
-        //     <Col>
-        //       <Card style={{ width: '18rem' }}>
-        //         <Card.Img variant="top" src="logo512.png" />
-        //         <Card.Body>
-        //           <Card.Title>Card Title</Card.Title>
-        //           <Card.Text>
-        //             Some quick example text to build on the card title and make up the bulk of
-        //             the card's content.
-        //           </Card.Text>
-        //           <Button variant="primary">Go somewhere</Button>
-        //         </Card.Body>
-        //       </Card>
-        //     </Col>
-
-        //     <Col>
-        //       <Card style={{ width: '18rem' }}>
-        //         <Card.Img variant="top" src="logo512.png" />
-        //         <Card.Body>
-        //           <Card.Title>Card Title</Card.Title>
-        //           <Card.Text>
-        //             Some quick example text to build on the card title and make up the bulk of
-        //             the card's content.
-        //           </Card.Text>
-        //           <Button variant="primary">Go somewhere</Button>
-        //         </Card.Body>
-        //       </Card>
-        //     </Col>
-
-        //     <Col>
-        //       <Card style={{ width: '18rem' }}>
-        //         <Card.Img variant="top" src="logo512.png" />
-        //         <Card.Body>
-        //           <Card.Title>Card Title</Card.Title>
-        //           <Card.Text>
-        //             Some quick example text to build on the card title and make up the bulk of
-        //             the card's content.
-        //           </Card.Text>
-        //           <Button variant="primary">Go somewhere</Button>
-        //         </Card.Body>
-        //       </Card>
-        //     </Col>
-        //   </Row>
-        // </Container>
-    )
+const useStyles = makeStyles(theme => ({
+  welcomeCard: {
+    textAlign: 'center',
+    padding: 20,
+    margin: 10
+  },
+  card: {
+    maxWidth: 345,
+    minWidth: 200,
+    textAlign: 'center',
+    margin: 10
+  },
+  media: {
+    height: 140,
+  },
+  cardContainer: {
+    padding: 0,
+    display: 'flex'
   }
+}));
+
+export default function Test() {
+	const classes = useStyles();
+
+    return(
+      <ContentContainer contentRight={<Test2 />}>
+        <Card className={classes.welcomeCard}>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">Welcome to RollHub!</Typography>
+            <CardContent>
+              An Online suite for all things tabletoppy
+            </CardContent>
+            <Button variant="contained" color="secondary">Learn more</Button>
+          </CardContent>
+        </Card>
+        <Container className={classes.cardContainer}>
+          <Card className={classes.card}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image="logo512.png"
+                title="Test logo da"
+              />
+              <Typography gutterBottom variant="h5" component="h2">
+                Leechi
+              </Typography>
+              <Typography variant="body2" component="p">
+                Some quick example text to build on the card title and make up the bulk of
+                the card's content.
+              </Typography>
+            </CardActionArea>
+          </Card>
+          <Card className={classes.card}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image="logo512.png"
+                title="Test logo da"
+              />
+              <Typography gutterBottom variant="h5" component="h2">
+                Leechi
+              </Typography>
+              <Typography variant="body2" component="p">
+                Some quick example text to build on the card title and make up the bulk of
+                the card's content.
+              </Typography>
+            </CardActionArea>
+          </Card>
+          <Card className={classes.card}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image="logo512.png"
+                title="Test logo da"
+              />
+              <Typography gutterBottom variant="h5" component="h2">
+                Leechi
+              </Typography>
+              <Typography variant="body2" component="p">
+                Some quick example text to build on the card title and make up the bulk of
+                the card's content.
+              </Typography>
+            </CardActionArea>
+          </Card>
+          <Card className={classes.card}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image="logo512.png"
+                title="Test logo da"
+              />
+              <Typography gutterBottom variant="h5" component="h2">
+                Leechi
+              </Typography>
+              <Typography variant="body2" component="p">
+                Some quick example text to build on the card title and make up the bulk of
+                the card's content.
+              </Typography>
+            </CardActionArea>
+          </Card>
+          <Card className={classes.card}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image="logo512.png"
+                title="Test logo da"
+              />
+              <Typography gutterBottom variant="h5" component="h2">
+                Leechi
+              </Typography>
+              <Typography variant="body2" component="p">
+                Some quick example text to build on the card title and make up the bulk of
+                the card's content.
+              </Typography>
+            </CardActionArea>
+          </Card>
+          <Card className={classes.card}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image="logo512.png"
+                title="Test logo da"
+              />
+              <Typography gutterBottom variant="h5" component="h2">
+                Leechi
+              </Typography>
+              <Typography variant="body2" component="p">
+                Some quick example text to build on the card title and make up the bulk of
+                the card's content.
+              </Typography>
+            </CardActionArea>
+          </Card>
+        </Container>
+      </ContentContainer>
+  )
 }

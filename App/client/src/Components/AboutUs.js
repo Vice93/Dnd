@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import '../css/main.css';
+import React from 'react';
 import ContentContainer from './ContentContainer';
 
 
 export default function AboutUs() {
+	
 	return (
 		<ContentContainer contentRight={<p>Test 3</p>}>
 			<p>
