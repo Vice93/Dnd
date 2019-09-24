@@ -5,15 +5,12 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Test from '../Components/Test';
 import Test2 from '../Components/Test2';
 import AboutUs from '../Components/AboutUs';
-import ContentContainer from '../Components/ContentContainer';
 import Login from '../Components/Login';
 import Register from "../Components/Register";
 import ForgotPassword from "../Components/ForgotPassword";
 import CustomThemeProvider from '../Providers/CustomThemeProvider';
 
 export default class Home extends Component {
-  // https://material-ui.com/styles/api/ 
-  // Implement ThemeProvider
   render() {
     return (
       <CustomThemeProvider>

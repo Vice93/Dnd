@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ContentContainer from '../Components/ContentContainer';
-import {Button,CardActionArea,CardActions,Typography,Card, CardContent, Container, CardMedia} from '@material-ui/core';
-import Test2 from '../Components/Test2';
+import {Button,CardActionArea,Typography,Card, CardContent, Container, CardMedia} from '@material-ui/core';
+import Login from '../Components/Login';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -11,8 +11,6 @@ const useStyles = makeStyles(theme => ({
     margin: 10
   },
   card: {
-    maxWidth: 345,
-    minWidth: 200,
     textAlign: 'center',
     margin: 10
   },
@@ -29,7 +27,7 @@ export default function Test() {
 	const classes = useStyles();
 
     return(
-      <ContentContainer contentRight={<Test2 />}>
+      <ContentContainer contentRight={<Login />}>
         <Card className={classes.welcomeCard}>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">Welcome to RollHub!</Typography>
@@ -39,7 +37,7 @@ export default function Test() {
             <Button variant="contained" color="secondary">Learn more</Button>
           </CardContent>
         </Card>
-        <Container className={classes.cardContainer}>
+        <Container fixed className={classes.cardContainer}>
           <Card className={classes.card}>
             <CardActionArea>
               <CardMedia
@@ -88,6 +86,8 @@ export default function Test() {
               </Typography>
             </CardActionArea>
           </Card>
+        </Container>
+        <Container fixed className={classes.cardContainer}>
           <Card className={classes.card}>
             <CardActionArea>
               <CardMedia
