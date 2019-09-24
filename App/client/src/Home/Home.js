@@ -16,23 +16,16 @@ import ForgotPassword from "../Components/ForgotPassword";
 
 const theme = createMuiTheme({
   palette: {
+    type: "dark",
     primary: {
       main: '#212121',
-      light: '#484848',
-      dark: '#000',
       contrastText: '#fff'
     },
     secondary: {
       main: '#aa00ff',
-      light: '#e254ff',
-      dark: '#7200ca',
       contrastText: '#fff'
     },
     contrastText: "#fff",
-    background: {
-      default: "#484848",
-      paper: "#484848"
-    },
     iconColor: {
       color: "#fff"
     }
