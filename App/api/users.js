@@ -17,10 +17,37 @@ module.exports = (router) => {
       return res.json({ success: true, data: users })
     }).catch((ex) => {
       console.log(ex)
-      return res.json({ success: false, err: ex })
+      res.status(500)
+      return res.json({ success: false, message: 'Unhandled exception occured.'})
     })
-    return res.json({success:true, data: null})
+  })
+
+  // Small example on how login could work, obviously not representative of anything realistic
+  router.post('/login', (req,res) => {
+    if(req.header.authorization == String.empty || !someAuthMiddleware(req.header.authorization)) {
+      res.status(401)
+      return res.json({ success: false, message: 'Unauthorized - Authorization failed.' })
+    }
+    if(req.query.userId == String.empty || req.query.userId == null) {
+      res.status(400);
+      return res.json({ success: false, message: 'Bad request - No user credentials found.'})
+    }
+    mysql('users').first(x => x.Id == req.query.userId).map((user) => user != null ? new User(user) : null).then((user) => {
+      if(user == null) {
+        res.status(401)
+        return res.json({ success: false, message: 'Unauthorized - Invalid userId.' })
+      }
+      return res.json({ success: true, data: user})
+    }).catch((ex) => {
+      console.log(ex)
+      res.status(500)
+      return res.json({ success: false, message: 'Unhandled exception occured.'})
+    })
   })
 
   return router
+}
+
+const someAuthMiddleware = (authInfo) => {
+  return true
 }
