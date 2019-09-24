@@ -10,6 +10,9 @@ import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from "@material-ui/core/styles";
 import { CssBaseline } from "@material-ui/core";
 import Login from '../Components/Login';
+import Register from "../Components/Register";
+import ForgotPassword from "../Components/ForgotPassword";
+
 
 const theme = createMuiTheme({
   palette: {
@@ -51,6 +54,8 @@ export default class Home extends Component {
               <Route path="/test" component={Test2} />} />
               <Route path="/about-us" component={AboutUs}/>} />
               <Route path="/login" component={Login}/>} />
+              <Route path="/register" component={Register}/>} />
+              <Route path="/forgot-password" component={ForgotPassword}/>} />
             </Switch>
           </ContentContainer>
         </BrowserRouter>
