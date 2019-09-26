@@ -12,9 +12,9 @@ import NotFound from '../components/NotFound'
 
 export default function Home(props) {
   return (
-    <CustomThemeProvider>
-      <BrowserRouter>
-        <MainNavbar isLoggedIn={false} toggleTheme={props.toggleTheme} />
+    <BrowserRouter>
+      <CustomThemeProvider>
+        <MainNavbar isLoggedIn={false} />
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route path="/login" component={Login} />
@@ -23,7 +23,7 @@ export default function Home(props) {
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route default component={NotFound}></Route>
         </Switch>
-      </BrowserRouter>
-    </CustomThemeProvider>
+      </CustomThemeProvider>
+    </BrowserRouter>
   )
 }
