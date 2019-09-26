@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import MainNavbar from '../components/MainNavbar'
 import '../css/main.css'
 import { BrowserRouter, Route, Switch } from "react-router-dom"
@@ -9,21 +9,19 @@ import LandingPage from '../components/LandingPage'
 import CustomThemeProvider from '../providers/CustomThemeProvider'
 import NotFound from '../components/NotFound'
 
-export default class Home extends Component {
-  render() {
-    return (
+export default function Home() {
+  return (
+    <BrowserRouter>
       <CustomThemeProvider>
-        <BrowserRouter>
-          <MainNavbar isLoggedIn={true} />
-          <Switch>
-            <Route exact path="/" component={LandingPage} />
-            <Route path="/path" component={Test} />
-            <Route path="/test" component={Test2} />
-            <Route path="/about-us" component={AboutUs} />
-            <Route default component={NotFound}></Route>
-          </Switch>
-        </BrowserRouter>
+        <MainNavbar isLoggedIn={true} />
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route path="/path" component={Test} />
+          <Route path="/test" component={Test2} />
+          <Route path="/about-us" component={AboutUs} />
+          <Route default component={NotFound}></Route>
+        </Switch>
       </CustomThemeProvider>
-    )
-  }
+    </BrowserRouter>
+  )
 }
