@@ -94,8 +94,6 @@ export default function Test() {
               </Typography>
             </CardActionArea>
           </Card>
-        </Container>
-        <Container fixed className={classes.cardContainer}>
           <Card className={classes.card}>
             <CardActionArea>
               <CardMedia
