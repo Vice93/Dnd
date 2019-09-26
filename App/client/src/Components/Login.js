@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Icon, Button, Grid, TextField, Typography, Card, CardContent, FormControl } from '@material-ui/core';
-import { Face } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
-import { withStyles } from '@material-ui/core/styles';
+import React from 'react'
+import { Icon, Button, Grid, TextField, Typography, Card, CardContent, FormControl } from '@material-ui/core'
+import { Face } from '@material-ui/icons'
+import { Link } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
+import { useAuth } from '../context/AuthContext'
+import { useState } from 'react'
+import history from '../providers/HistoryProvider'
 
-const styles = theme => ({
+
+const useStyles = makeStyles(theme => ({
   card: {
     padding: '30px 20px',
     display: 'contents',
@@ -21,49 +24,54 @@ const styles = theme => ({
   grid: {
     marginTop: 10
   }
-});
+}));
 
 
-class Login extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      // Login form 
-      <Card className={classes.card}>
-        <CardContent>
-          <Icon>
-            <Face className="icon-size" />
-          </Icon>
-          <Typography component="h1">Sign in</Typography>
-          <FormControl className={classes.form}>
-            <TextField autoFocus variant="outlined" margin="normal" required fullWidth id="email"
-              label="Email Address" name="email" autoComplete="email" autoFocus />
-            <TextField variant="outlined" margin="normal" required fullWidth name="password"
-              label="Password" type="password" id="password" autoComplete="current-password" />
-            <Button type="submit" fullWidth variant="contained" color="primary">
-              Sign in
-            </Button>
-            <Grid container className={classes.grid}>
-              <Grid item xs>
-                <Button className={classes.button} type="submit" color="secondary" component={Link} to="/forgot-password">
-                  Forgot password?
-                </Button>
-              </Grid>
-              <Grid item xs>
-                <Button className={classes.button} type="submit" color="secondary" component={Link} to="/register">
-                  No account?
-              </Button>
-              </Grid>
-            </Grid>
-          </FormControl>
-        </CardContent>
-      </Card>
-    )
+
+
+export default function Login() {
+  const classes = useStyles();
+  const { login } = useAuth()
+  const [emInput, setEm] = useState('');
+  const [pwInput, setPw] = useState('');
+
+  const signIn = () => {
+    //Validate and show snackbar or smth: https://material-ui.com/components/snackbars/
+
+    if(emInput !== '' && pwInput !== '')
+      login({emInput, pwInput}).then(history.push('/'))
   }
+  
+  return (
+    // Login form 
+    <Card className={classes.card}>
+      <CardContent>
+        <Icon>
+          <Face className="icon-size" />
+        </Icon>
+        <Typography component="h1">Sign in</Typography>
+        <FormControl className={classes.form}>
+          <TextField value={emInput} onInput={e => setEm(e.target.value)} autoFocus variant="outlined" margin="normal" required fullWidth id="email"
+            label="Email Address" name="email" autoComplete="email" />
+          <TextField value={pwInput} onInput={e => setPw(e.target.value)} variant="outlined" margin="normal" required fullWidth name="password"
+            label="Password" type="password" id="password" autoComplete="current-password" />
+          <Button type="submit" fullWidth variant="contained" color="primary" onClick={signIn}>
+            Sign in
+          </Button>
+          <Grid container className={classes.grid}>
+            <Grid item xs>
+              <Button className={classes.button} type="submit" color="secondary" component={Link} to="/forgot-password">
+                Forgot password?
+              </Button>
+            </Grid>
+            <Grid item xs>
+              <Button className={classes.button} type="submit" color="secondary" component={Link} to="/register">
+                No account?
+            </Button>
+            </Grid>
+          </Grid>
+        </FormControl>
+      </CardContent>
+    </Card>
+  )
 }
-
-Login.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(Login);

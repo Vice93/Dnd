@@ -37,7 +37,7 @@ class Register extends Component {
 					<Typography component="h1">Create an account</Typography>
 					<FormControl className={classes.form}>
 						<TextField autoFocus variant="outlined" margin="normal" required fullWidth id="email"
-							label="Email Address" name="email" autoComplete="email" autoFocus />
+							label="Email Address" name="email" autoComplete="email" />
 						<TextField variant="outlined" margin="normal" required fullWidth name="password"
 							label="Password" type="password" id="password" autoComplete="current-password" />
 						<TextField variant="outlined" margin="normal" required fullWidth name="password"

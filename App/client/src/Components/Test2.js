@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button, CardActionArea, Typography, Card, CardContent, Container, CardMedia } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import ContentContainer from './ContentContainer';
 import { Button, CardActionArea, Typography, Card, CardContent, Container, CardMedia } from '@material-ui/core';
-import Login from './Login';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -27,7 +26,7 @@ export default function Test() {
   const classes = useStyles();
 
   return (
-    <ContentContainer contentRight={<Login />}>
+    <ContentContainer>
       <Card className={classes.welcomeCard}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">Welcome to RollHub!</Typography>

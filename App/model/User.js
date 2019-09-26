@@ -12,4 +12,13 @@ module.exports = class User {
   testFunction() {
     console.log("Mapping to type works. Username: " + this.Username)
   }
+
+  getUser() {
+    return {
+      id: this.Id,
+      email: this.Email,
+      createdDate: this.CreatedDate,
+      updatedDate: this.UpdatedDate
+    }
+  }
 }

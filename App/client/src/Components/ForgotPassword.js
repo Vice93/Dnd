@@ -37,7 +37,7 @@ class ForgotPassword extends Component {
 					<Typography component="h1">Reset Password</Typography>
 					<FormControl className={classes.form}>
 						<TextField autoFocus variant="outlined" margin="normal" required fullWidth id="email"
-							label="Email Address" name="email" autoComplete="email" autoFocus />
+							label="Email Address" name="email" autoComplete="email" />
 						<Button type="submit" fullWidth variant="contained" color="primary">
 							Send Email
 						</Button>

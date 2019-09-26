@@ -1,76 +1,24 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react'
+import {useUser} from './context/UserContext'
+import {FullPageSpinner} from './components/Lib'
 
-class App extends Component {
-  // initialize our state
-  state = {
-    data: [],
-    id: 0,
-    message: null,
-    intervalIsSet: false,
-    idToDelete: null,
-    idToUpdate: null,
-    objectToUpdate: null,
-  };
+const loadAuthenticatedApp = () => import('./Application/AuthenticatedApp')
+const AuthenticatedApp = React.lazy(loadAuthenticatedApp)
+const UnauthenticatedApp = React.lazy(() => import('./Application/UnauthenticatedApp'))
 
-  // when component mounts, first thing it does is fetch all existing data in our db
-  // then we incorporate a polling logic so that we can easily see if our db has
-  // changed and implement those changes into our UI
-  componentDidMount() {
-    this.getDataFromDb();
-    if (!this.state.intervalIsSet) {
-      let interval = setInterval(this.getDataFromDb, 1000);
-      this.setState({ intervalIsSet: interval });
-    }
-  }
-
-  // never let a process live forever
-  // always kill a process everytime we are done using it
-  componentWillUnmount() {
-    if (this.state.intervalIsSet) {
-      clearInterval(this.state.intervalIsSet);
-      this.setState({ intervalIsSet: null });
-    }
-  }
-
-  // just a note, here, in the front end, we use the id key of our data object
-  // in order to identify which we want to Update or delete.
-  // for our back end, we use the object id assigned by MongoDB to modify
-  // data base entries
-
-  // our first get method that uses our backend api to
-  // fetch data from our data base
-  getDataFromDb = () => {
-    fetch('http://localhost:3001/api/users')
-      .then((data) => data.json())
-      .then((res) => this.setState({ data: res.data, success: res.success }));
-  };
-
-  // here is our UI
-  // it is easy to understand their functions when you
-  // see them render into our screen
-  render() {
-    const { data } = this.state;
-    return (
-      <div>
-        Yay det funker! Users data:
-        <ul>
-          {data.length <= 0
-            ? 'NO DB ENTRIES YET'
-            : data.map((dat) => (
-              <li style={{ padding: '10px' }}>
-                <span style={{ color: 'gray' }}> Id: </span> {dat.Id} <br />
-                  <span style={{ color: 'gray' }}> Username: </span> {dat.Username} <br />
-                  <span style={{ color: 'gray' }}> Email: </span> {dat.Email} <br />
-                  <span style={{ color: 'gray' }}> Created At: </span> {dat.CreatedDate} <br />
-                  <span style={{ color: 'gray' }}> Updated At: </span> {dat.UpdatedDate == null ? 'N/A' : dat.UpdatedDate}
-                </li>
-              ))}
-        </ul>
-        {console.log(data)}
-      </div>
-    );
-  }
+function App() {
+  const user = useUser()
+  // pre-load the authenticated side in the background while the user's
+  // filling out the login form.
+  React.useEffect(() => {
+    loadAuthenticatedApp()
+  }, [])
+  
+  return (
+    <React.Suspense fallback={<FullPageSpinner />}>
+      {user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+    </React.Suspense>
+  )
 }
 
-export default App;
+export default App
