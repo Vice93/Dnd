@@ -44,7 +44,7 @@ export default function ContentContainer(props) {
     height: window.innerHeight,
     width: window.innerWidth
   })
-  
+
   React.useEffect(() => {
     const debouncedHandleResize = debounce(function handleResize() {
       setDimensions({
