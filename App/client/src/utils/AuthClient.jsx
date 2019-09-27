@@ -25,8 +25,8 @@ function login({username, password}) {
   return client('login', {body: {username, password}}).then(handleUserResponse)
 }
 
-function register({username, password}) {
-  return client('register', {body: {username, password}}).then(
+function register({username, email, password}) {
+  return client('register', {body: {username, email, password}}).then(
     handleUserResponse,
   )
 }

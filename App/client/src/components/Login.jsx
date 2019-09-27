@@ -32,14 +32,14 @@ const useStyles = makeStyles(theme => ({
 export default function Login() {
   const classes = useStyles()
   const { login } = useAuth()
-  const [emInput, setEm] = useState('')
+  const [unInput, setUn] = useState('')
   const [pwInput, setPw] = useState('')
 
   const signIn = () => {
     //Validate and show snackbar or smth: https://material-ui.com/components/snackbars/
 
-    if(emInput !== '' && pwInput !== '')
-      login({emInput, pwInput}).then(history.push('/'))
+    if(unInput !== '' && pwInput !== '')
+      login({unInput, pwInput}).then(history.push('/'))
   }
   
   return (
@@ -51,8 +51,8 @@ export default function Login() {
         </Icon>
         <Typography component="h1">Sign in</Typography>
         <FormControl className={classes.form}>
-          <TextField value={emInput} onInput={e => setEm(e.target.value)} autoFocus variant="outlined" margin="normal" required fullWidth id="email"
-            label="Email / Username" name="email" autoComplete="email" />
+          <TextField value={unInput} onInput={e => setUn(e.target.value)} autoFocus variant="outlined" margin="normal" required fullWidth id="username"
+            label="Username" name="username" autoComplete="username" />
           <TextField value={pwInput} onInput={e => setPw(e.target.value)} variant="outlined" margin="normal" required fullWidth name="password"
             label="Password" type="password" id="password" autoComplete="current-password" />
           <Button type="submit" fullWidth variant="contained" color="primary" onClick={signIn}>
