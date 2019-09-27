@@ -3,7 +3,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from "@material-ui/core/styles";
 import { CssBaseline } from "@material-ui/core";
 
-const themeKey = '__dnd__theme__'
+const themeKey = '__dnd_theme__'
 const defaultTheme = 'white'
 const variantTheme = 'black'
 
