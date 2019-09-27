@@ -52,7 +52,7 @@ export default function Login() {
         <Typography component="h1">Sign in</Typography>
         <FormControl className={classes.form}>
           <TextField value={emInput} onInput={e => setEm(e.target.value)} autoFocus variant="outlined" margin="normal" required fullWidth id="email"
-            label="Email Address" name="email" autoComplete="email" />
+            label="Email / Username" name="email" autoComplete="email" />
           <TextField value={pwInput} onInput={e => setPw(e.target.value)} variant="outlined" margin="normal" required fullWidth name="password"
             label="Password" type="password" id="password" autoComplete="current-password" />
           <Button type="submit" fullWidth variant="contained" color="primary" onClick={signIn}>
