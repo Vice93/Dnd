@@ -24,16 +24,16 @@ const useStyles = makeStyles(theme => ({
   grid: {
     marginTop: 10
   }
-}));
+}))
 
 
 
 
 export default function Login() {
-  const classes = useStyles();
+  const classes = useStyles()
   const { login } = useAuth()
-  const [emInput, setEm] = useState('');
-  const [pwInput, setPw] = useState('');
+  const [emInput, setEm] = useState('')
+  const [pwInput, setPw] = useState('')
 
   const signIn = () => {
     //Validate and show snackbar or smth: https://material-ui.com/components/snackbars/
