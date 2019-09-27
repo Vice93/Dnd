@@ -3,6 +3,7 @@ import ContentContainer from './ContentContainer';
 import { Typography, Card, CardContent } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
+
 const useStyles = makeStyles(theme => ({
 	welcomeCard: {
 		textAlign: 'center',
