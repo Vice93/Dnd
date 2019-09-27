@@ -13,6 +13,7 @@ Installation:
  
 Update packages:
  - Run Setup.bat
+ - Or use command: "npm run ud"
 
 
 Run the app:
