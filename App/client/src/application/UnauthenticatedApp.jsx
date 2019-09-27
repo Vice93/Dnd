@@ -9,6 +9,7 @@ import ForgotPassword from "../components/ForgotPassword"
 import LandingPage from '../components/LandingPage'
 import CustomThemeProvider from '../providers/CustomThemeProvider'
 import NotFound from '../components/NotFound'
+import {CustomSnackbar} from '../components/Lib'
 
 export default function Home(props) {
   return (
@@ -23,6 +24,7 @@ export default function Home(props) {
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route default component={NotFound}></Route>
         </Switch>
+        <CustomSnackbar />
       </CustomThemeProvider>
     </BrowserRouter>
   )

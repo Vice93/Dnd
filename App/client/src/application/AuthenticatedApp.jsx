@@ -8,6 +8,7 @@ import AboutUs from '../components/AboutUs'
 import LandingPage from '../components/LandingPage'
 import CustomThemeProvider from '../providers/CustomThemeProvider'
 import NotFound from '../components/NotFound'
+import {CustomSnackbar} from '../components/Lib'
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
           <Route path="/about-us" component={AboutUs} />
           <Route default component={NotFound}></Route>
         </Switch>
+        <CustomSnackbar />
       </CustomThemeProvider>
     </BrowserRouter>
   )

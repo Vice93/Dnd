@@ -1,5 +1,6 @@
 const mysql = require('../database/initPool.js')
 const User = require('../model/User.js')
+const lib = require('../database/lib.js')
 
 module.exports = (router) => {
   // req = request, res = result
@@ -20,6 +21,24 @@ module.exports = (router) => {
       res.status(500)
       return res.json({ success: false, message: 'Unhandled exception occured.' })
     })
+  })
+
+  router.post('/register', (req, res) => {
+    try {
+      let body = req.body
+      if (body.username === '' || body.email === '' || body.password === '') {
+        res.status(404)
+        return res.json({ success: false, message: 'Bad Request: Body is missing information.' })
+      }
+      lib.registerUser(body.username, body.email, body.password, (result) => {
+        // IF result.created == true, send email asking for verification, then they can login.
+        return res.json(result)
+      })
+    }
+    catch(ex) {
+      console.log(ex)
+      return res.json({success: false, message: 'An unhandled exception occured.'})
+    }
   })
 
   // Small example on how login could work, obviously not representative of anything realistic
@@ -64,7 +83,7 @@ module.exports = (router) => {
         return res.json({ success: false, message: 'Unauthorized - Invalid userId.', data: {} })
       }
       res.status(200)
-      return res.json({user: user.getUser()})
+      return res.json({ user: user.getUser() })
     })
     // if(req.header.authorization == String.empty || !someAuthMiddleware(req.header.authorization)) {
     //   res.status(401)

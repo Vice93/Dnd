@@ -10,6 +10,10 @@ function handleUserResponse({ success, message, data}) {
   return data.user
 }
 
+function handleRegisterResponse({ created, message }) {
+  return Promise.resolve({created,message})
+}
+
 function getUser() {
   const token = getToken()
   if (!token) {
@@ -27,7 +31,7 @@ function login({username, password}) {
 
 function register({username, email, password}) {
   return client('register', {body: {username, email, password}}).then(
-    handleUserResponse,
+    handleRegisterResponse,
   )
 }
 

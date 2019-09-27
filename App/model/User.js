@@ -1,3 +1,6 @@
+const bcrypt = require('bcrypt')
+
+
 module.exports = class User {
 
   constructor({Id, Username, Email, Password, CreatedDate, UpdatedDate}) {
@@ -20,5 +23,12 @@ module.exports = class User {
       createdDate: this.CreatedDate,
       updatedDate: this.UpdatedDate
     }
+  }
+
+  comparePassword(password, next) {
+    bcrypt.compare(password, this.Password, (err, isMatch) => {
+      if(err) return next(err)
+      next(null, isMatch)
+    })
   }
 }

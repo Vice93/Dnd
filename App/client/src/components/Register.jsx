@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
 import history from '../providers/HistoryProvider'
-import {Spinner} from '../components/Lib'
+import { Spinner, openSnackbar } from '../components/Lib'
 
 const useStyles = makeStyles(theme => ({
 	card: {
@@ -49,13 +49,18 @@ export default function Register() {
 		
 		if (formValid && pwMatches) {
 			setIsLoading(true)
-			console.log("yay")
-			register(state).then(() =>{
+			register(state).then((res) => {
+				console.log(res)
 				setIsLoading(false)
-				history.push('/')
+				if (!res.created)
+					openSnackbar('error', res.message)
+				else
+					openSnackbar('success', 'Account registered. Please check your email to continue.')
+				//history.push('/') //rerouting with history push doesnt work after promise is resolved here
 			}).catch(err => {
 				setIsLoading(false)
-				console.log(err)
+				openSnackbar('error', 'Something went wrong. Please try again later.')
+				console.log(err) // Show some message that everything is fucked
 			})
 		}
 	}
@@ -67,7 +72,8 @@ export default function Register() {
 		const pwValid = pwRegex.test(state.password)
 		const cmValid = pwRegex.test(state.confirm)
 
-		setFieldErr({...fieldErr, 
+		setFieldErr({
+			...fieldErr,
 			username: !usrnValid,
 			email: !emailValid,
 			password: !pwValid,
@@ -95,32 +101,32 @@ export default function Register() {
 				<FormControl className={classes.form}>
 					<TextField autoFocus variant="outlined" onInput={e => setState({ ...state, username: e.target.value })} margin="normal" required fullWidth id="username"
 						label="Username" name="username" autoComplete="username" error={fieldErr.username} />
-						{
-							fieldErr.username &&
-							<FormHelperText error={true}>Username is too short</FormHelperText>
-						}
+					{
+						fieldErr.username &&
+						<FormHelperText error={true}>Username is too short</FormHelperText>
+					}
 					<TextField variant="outlined" onInput={e => setState({ ...state, email: e.target.value })} margin="normal" required fullWidth id="email"
 						label="Email Address" name="email" autoComplete="email" error={fieldErr.email} />
-						{
-							fieldErr.email &&
-							<FormHelperText error={true}>Invalid Email</FormHelperText>
-						}
+					{
+						fieldErr.email &&
+						<FormHelperText error={true}>Invalid Email</FormHelperText>
+					}
 					<TextField variant="outlined" onInput={e => setState({ ...state, password: e.target.value })} margin="normal" required fullWidth name="password"
 						label="Password" type="password" id="password" autoComplete="current-password" error={fieldErr.password} />
-						{
-							fieldErr.password &&
-							<FormHelperText error={true}>Invalid Password</FormHelperText>
-						}
+					{
+						fieldErr.password &&
+						<FormHelperText error={true}>Invalid Password</FormHelperText>
+					}
 					<TextField variant="outlined" onInput={e => setState({ ...state, confirm: e.target.value })} margin="normal" required fullWidth name="confirm"
 						label="Confirm Password" type="password" id="confirm" autoComplete="current-password" error={fieldErr.confirm} />
-						{
-							fieldErr.confirm &&
-							<FormHelperText error={true} className={classes.label}>Invalid Password</FormHelperText>
-						}
-						{
-							!fieldErr.confirm && !isMatch &&
-							<FormHelperText error={true}>Password doesnt match</FormHelperText>
-						}
+					{
+						fieldErr.confirm &&
+						<FormHelperText error={true} className={classes.label}>Invalid Password</FormHelperText>
+					}
+					{
+						!fieldErr.confirm && !isMatch &&
+						<FormHelperText error={true}>Password doesnt match</FormHelperText>
+					}
 					<Button type="submit" className={classes.margin} fullWidth variant="contained" color="primary" onClick={sendForm}>
 						Register
 					</Button>
