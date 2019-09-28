@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+const middleware = require('../api/middleware.js')
 
 
 module.exports = class User {
@@ -23,6 +24,10 @@ module.exports = class User {
       createdDate: this.CreatedDate,
       updatedDate: this.UpdatedDate
     }
+  }
+
+  getToken() {
+    return middleware.generateToken(this.Username)
   }
 
   comparePassword(password, next) {

@@ -2,7 +2,7 @@ import client from './ApiClient'
 
 const localStorageKey = '__dnd_token__'
 
-function handleUserResponse({ success, message, data}) {
+function handleLoginResponse({ success, message, data}) {
   if(!success) {
     return null;
   }
@@ -26,7 +26,7 @@ function getUser() {
 }
 
 function login({username, password}) {
-  return client('login', {body: {username, password}}).then(handleUserResponse)
+  return client('login', {body: {username, password}}).then(handleLoginResponse)
 }
 
 function register({username, email, password}) {

@@ -37,9 +37,9 @@ export default function Login() {
 
   const signIn = () => {
     //Validate and show snackbar or smth: https://material-ui.com/components/snackbars/
-
+    console.log(unInput,  pwInput)
     if(unInput !== '' && pwInput !== '')
-      login({unInput, pwInput}).then(history.push('/'))
+      login({username: unInput, password: pwInput}).then(history.push('/'))
   }
   
   return (

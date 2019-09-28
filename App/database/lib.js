@@ -1,12 +1,44 @@
 const mysql = require('./initPool.js')
 const LINQ = require('node-linq').LINQ
 const bcrypt = require('bcrypt')
+const User = require('../model/User.js')
 
 const encryptPassword = (password, callback) => {
   bcrypt.hash(password, 10, (err, hash) => {
     if(err) throw err
     callback(hash)
   })
+}
+
+const comparePassword = (password, hash, callback) => {
+  bcrypt.compare(password, hash, (err, matches) => {
+    if(matches)
+      callback(true)
+    else
+      callback(false)
+  })
+}
+
+const login = (username, password, callback) => {
+  mysql('users')
+    .select()
+    .where('Username', username)
+    .then((rows) => {
+      if(rows.length === 0)
+        callback({ success: false, message: 'Invalid username or password' })
+      else {
+        let hashedPassword = rows[0].Password
+        comparePassword(password, hashedPassword, (success) => {
+          if(success)
+            callback({ success: true, message: '', user: new User(rows[0]) })
+          else
+            callback({ success: false, message: 'Invalid username or password' })
+        })
+      }
+    }).catch((ex) =>  {
+      console.log(ex)
+      callback({ success: false, message: 'An unhandeled exception occured'})
+    })
 }
 
 
@@ -46,5 +78,6 @@ const registerUser = (username, email, password, callback) => {
 
 
 module.exports = {
-  registerUser
+  registerUser,
+  login
 }
