@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
-import history from '../providers/HistoryProvider'
 import { Spinner, openSnackbar } from '../components/Lib'
 
 const useStyles = makeStyles(theme => ({
@@ -45,7 +44,7 @@ export default function Register() {
 	const sendForm = () => {
 		const formValid = validateForm()
 		const pwMatches = checkPasswordMatch()
-		
+
 		if (formValid && pwMatches) {
 			setIsLoading(true)
 			register(state).then((res) => {
@@ -65,9 +64,9 @@ export default function Register() {
 	}
 
 	const enterPressed = (e) => {
-    if(e.key === 'Enter')
+		if (e.key === 'Enter')
 			sendForm()
-  }
+	}
 
 	// Validate RegExp
 	const validateForm = () => {
@@ -102,50 +101,52 @@ export default function Register() {
 					<Face className="icon-size" />
 				</Icon>
 				<Typography component="h1">Create an account</Typography>
-				<FormControl className={classes.form} onKeyPress={enterPressed}>
-					<TextField autoFocus variant="outlined" onInput={e => setState({ ...state, username: e.target.value })} margin="normal" required fullWidth id="username"
-						label="Username" name="username" autoComplete="username" error={fieldErr.username} />
-					{
-						fieldErr.username &&
-						<FormHelperText error={true}>Username is too short</FormHelperText>
-					}
-					<TextField variant="outlined" onInput={e => setState({ ...state, email: e.target.value })} margin="normal" required fullWidth id="email"
-						label="Email Address" name="email" autoComplete="email" error={fieldErr.email} />
-					{
-						fieldErr.email &&
-						<FormHelperText error={true}>Invalid Email</FormHelperText>
-					}
-					<TextField variant="outlined" onInput={e => setState({ ...state, password: e.target.value })} margin="normal" required fullWidth name="password"
-						label="Password" type="password" id="password" autoComplete="current-password" error={fieldErr.password} />
-					{
-						fieldErr.password &&
-						<FormHelperText error={true}>Invalid Password</FormHelperText>
-					}
-					<TextField variant="outlined" onInput={e => setState({ ...state, confirm: e.target.value })} margin="normal" required fullWidth name="confirm"
-						label="Confirm Password" type="password" id="confirm" autoComplete="current-password" error={fieldErr.confirm} />
-					{
-						fieldErr.confirm &&
-						<FormHelperText error={true} className={classes.label}>Invalid Password</FormHelperText>
-					}
-					{
-						!fieldErr.confirm && !isMatch &&
-						<FormHelperText error={true}>Password doesnt match</FormHelperText>
-					}
-					<Button type="submit" className={classes.margin} fullWidth variant="contained" color="primary" onClick={sendForm}>
-						Register
-					</Button>
-					<Grid container className={classes.grid}>
-						<Grid item xs>
-							<Button className={classes.button} type="submit" color="secondary" component={Link} to="/login">
-								Already got an account?
+				<form>
+					<FormControl className={classes.form} onKeyPress={enterPressed}>
+						<TextField autoFocus variant="outlined" onInput={e => setState({ ...state, username: e.target.value })} margin="normal" required fullWidth id="username"
+							label="Username" name="username" autoComplete="username" error={fieldErr.username} />
+						{
+							fieldErr.username &&
+							<FormHelperText error={true}>Username is too short</FormHelperText>
+						}
+						<TextField variant="outlined" onInput={e => setState({ ...state, email: e.target.value })} margin="normal" required fullWidth id="email"
+							label="Email Address" name="email" autoComplete="email" error={fieldErr.email} />
+						{
+							fieldErr.email &&
+							<FormHelperText error={true}>Invalid Email</FormHelperText>
+						}
+						<TextField variant="outlined" onInput={e => setState({ ...state, password: e.target.value })} margin="normal" required fullWidth name="password"
+							label="Password" type="password" id="password" autoComplete="current-password" error={fieldErr.password} />
+						{
+							fieldErr.password &&
+							<FormHelperText error={true}>Invalid Password</FormHelperText>
+						}
+						<TextField variant="outlined" onInput={e => setState({ ...state, confirm: e.target.value })} margin="normal" required fullWidth name="confirm"
+							label="Confirm Password" type="password" id="confirm" autoComplete="current-password" error={fieldErr.confirm} />
+						{
+							fieldErr.confirm &&
+							<FormHelperText error={true} className={classes.label}>Invalid Password</FormHelperText>
+						}
+						{
+							!fieldErr.confirm && !isMatch &&
+							<FormHelperText error={true}>Password doesnt match</FormHelperText>
+						}
+						<Button type="submit" className={classes.margin} fullWidth variant="contained" color="primary" onClick={sendForm}>
+							Register
+						</Button>
+						<Grid container className={classes.grid}>
+							<Grid item xs>
+								<Button className={classes.button} type="submit" color="secondary" component={Link} to="/login">
+									Already got an account?
 								</Button>
+							</Grid>
 						</Grid>
-					</Grid>
-					{
-						isLoading &&
-						<Spinner />
-					}
-				</FormControl>
+						{
+							isLoading &&
+							<Spinner />
+						}
+					</FormControl>
+				</form>
 			</CardContent>
 		</Card>
 	)

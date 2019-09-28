@@ -35,22 +35,29 @@ export default function Login() {
   const { login } = useAuth()
   const [unInput, setUn] = useState('')
   const [pwInput, setPw] = useState('')
+	const [isLoading, setIsLoading] = useState(false)
 
   const signIn = () => {
-    if(unInput !== '' && pwInput !== '')
-      login({username: unInput, password: pwInput}).then((res) => {
-        if(res === undefined) // means we reloaded the page
+    if (unInput !== '' && pwInput !== '') {
+      setIsLoading(true)
+      login({ username: unInput, password: pwInput }).then((res) => {
+        if (res === undefined) // means we reloaded the page
           history.push('/')
         else
           openSnackbar('error', res.message)
+        setIsLoading(false)
       })
+    } 
+    else {
+      openSnackbar('warning', unInput === '' ? 'Please write a username' : 'Please write a password')
+    }
   }
 
   const enterPressed = (e) => {
-    if(e.key === 'Enter')
+    if (e.key === 'Enter')
       signIn()
   }
-  
+
   return (
     // Login form 
     <Card className={classes.card}>
@@ -59,27 +66,33 @@ export default function Login() {
           <Face className="icon-size" />
         </Icon>
         <Typography component="h1">Sign in</Typography>
-        <FormControl className={classes.form} onKeyPress={enterPressed}>
-          <TextField value={unInput} onInput={e => setUn(e.target.value)} autoFocus variant="outlined" margin="normal" required fullWidth id="username"
-            label="Username" name="username" autoComplete="username" />
-          <TextField value={pwInput} onInput={e => setPw(e.target.value)} variant="outlined" margin="normal" required fullWidth name="password"
-            label="Password" type="password" id="password" autoComplete="current-password" />
-          <Button type="submit" fullWidth variant="contained" color="primary" onClick={signIn}>
-            Sign in
+        <form>
+          <FormControl className={classes.form} onKeyPress={enterPressed}>
+            <TextField value={unInput} onInput={e => setUn(e.target.value)} autoFocus variant="outlined" margin="normal" required fullWidth id="username"
+              label="Username" name="username" autoComplete="username" />
+            <TextField value={pwInput} onInput={e => setPw(e.target.value)} variant="outlined" margin="normal" required fullWidth name="password"
+              label="Password" type="password" id="password" autoComplete="current-password" />
+            <Button fullWidth variant="contained" color="primary" onClick={signIn}>
+              Sign in
           </Button>
-          <Grid container className={classes.grid}>
-            <Grid item xs>
-              <Button className={classes.button} color="secondary" component={Link} to="/forgot-password">
-                Forgot password?
+            <Grid container className={classes.grid}>
+              <Grid item xs>
+                <Button className={classes.button} color="secondary" component={Link} to="/forgot-password">
+                  Forgot password?
               </Button>
-            </Grid>
-            <Grid item xs>
-              <Button className={classes.button} color="secondary" component={Link} to="/register">
-                No account?
+              </Grid>
+              <Grid item xs>
+                <Button className={classes.button} color="secondary" component={Link} to="/register">
+                  No account?
             </Button>
+              </Grid>
             </Grid>
-          </Grid>
-        </FormControl>
+            {
+							isLoading &&
+							<Spinner />
+						}
+          </FormControl>
+        </form>
       </CardContent>
     </Card>
   )
