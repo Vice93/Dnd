@@ -49,11 +49,11 @@ const whiteTheme = createMuiTheme({
   palette: {
     type: "light",
     primary: {
-      main: '#1e88e5',
+      main: '#6200EE',
       contrastText: '#000'
     },
     secondary: {
-      main: '#ec407a',
+      main: '#03DAC6',
       contrastText: '#fff'
     },
     contrastText: "#000",

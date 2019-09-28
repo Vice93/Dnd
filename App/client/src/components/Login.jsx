@@ -41,8 +41,10 @@ export default function Login() {
     if (unInput !== '' && pwInput !== '') {
       setIsLoading(true)
       login({ username: unInput, password: pwInput }).then((res) => {
-        if (res === undefined) // means we reloaded the page
+        if (res === undefined) { // means we reloaded the page
           history.push('/')
+          openSnackbar('success', 'Logged in')
+        }
         else
           openSnackbar('error', res.message)
         setIsLoading(false)

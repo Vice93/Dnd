@@ -1,6 +1,7 @@
 import React from 'react'
 import {useUser} from './context/UserContext'
 import {FullPageSpinner} from './components/Lib'
+import {CustomSnackbar} from './components/Lib'
 
 const loadAuthenticatedApp = () => import('./application/AuthenticatedApp')
 const AuthenticatedApp = React.lazy(loadAuthenticatedApp)
@@ -17,6 +18,7 @@ function App() {
   return (
     <React.Suspense fallback={<FullPageSpinner />}>
       {userObj.user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+      <CustomSnackbar />
     </React.Suspense>
   )
 }
