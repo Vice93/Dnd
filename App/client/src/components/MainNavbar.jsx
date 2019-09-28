@@ -19,7 +19,7 @@ export default function MainNavbar(props) {
     <AppBar position="fixed" top="0 !important">
       <Toolbar color="secondary">
         <Sidebar isLoggedIn={props.isLoggedIn} />
-        <Button component={Link} to="/" color="secondary">Home</Button>
+        <Button component={Link} to="/" color="default">Home</Button>
         <div style={{ flex: 1 }}>{/*This is purely a spacer to push the button to the right*/}</div>
         <SettingsMenu toggleTheme={props.toggleTheme}/>
         {props.isLoggedIn

@@ -50,11 +50,11 @@ const whiteTheme = createMuiTheme({
     type: "light",
     primary: {
       main: '#6200EE',
-      contrastText: '#000'
+      contrastText: '#FFF'
     },
     secondary: {
       main: '#03DAC6',
-      contrastText: '#fff'
+      contrastText: '#000'
     },
     contrastText: "#000",
     iconColor: {
@@ -69,6 +69,11 @@ const whiteTheme = createMuiTheme({
           transitionProperty: 'background-color, color',
         },
       },
+    },
+    MuiButton: {
+      root: {
+        color: '#fff'
+      }
     }
   },
 });
