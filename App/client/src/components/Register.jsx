@@ -43,7 +43,6 @@ export default function Register() {
 
 
 	const sendForm = () => {
-		//Validate and show snackbar or smth: https://material-ui.com/components/snackbars/
 		const formValid = validateForm()
 		const pwMatches = checkPasswordMatch()
 		
@@ -64,6 +63,11 @@ export default function Register() {
 			})
 		}
 	}
+
+	const enterPressed = (e) => {
+    if(e.key === 'Enter')
+			sendForm()
+  }
 
 	// Validate RegExp
 	const validateForm = () => {
@@ -98,7 +102,7 @@ export default function Register() {
 					<Face className="icon-size" />
 				</Icon>
 				<Typography component="h1">Create an account</Typography>
-				<FormControl className={classes.form}>
+				<FormControl className={classes.form} onKeyPress={enterPressed}>
 					<TextField autoFocus variant="outlined" onInput={e => setState({ ...state, username: e.target.value })} margin="normal" required fullWidth id="username"
 						label="Username" name="username" autoComplete="username" error={fieldErr.username} />
 					{

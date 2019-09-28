@@ -4,10 +4,10 @@ const localStorageKey = '__dnd_token__'
 
 function handleLoginResponse({ success, message, data}) {
   if(!success) {
-    return null;
+    return {user: null, message: message};
   }
   window.localStorage.setItem(localStorageKey, data.token)
-  return data.user
+  return {user: data.user, message: message}
 }
 
 function handleRegisterResponse({ created, message }) {
@@ -17,11 +17,11 @@ function handleRegisterResponse({ created, message }) {
 function getUser() {
   const token = getToken()
   if (!token) {
-    return Promise.resolve(null)
+    return Promise.resolve({user: null, message: ''})
   }
   return client('me').catch(error => {
     logout()
-    return Promise.reject(error)
+    return Promise.reject({user: null, message: ''})
   })
 }
 

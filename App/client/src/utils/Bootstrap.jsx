@@ -2,12 +2,13 @@ import {getUser} from './AuthClient'
 
 async function bootstrapAppData() {
   const data = await getUser()
-  if (!data) {
-    return {user: null}
+  if (!data.user) {
+    return {user: null, message: data.message}
   }
-  const {user} = data
+  const {user, message} = data
   return {
-    user
+    user,
+    message
   }
 }
 

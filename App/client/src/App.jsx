@@ -7,7 +7,7 @@ const AuthenticatedApp = React.lazy(loadAuthenticatedApp)
 const UnauthenticatedApp = React.lazy(() => import('./application/UnauthenticatedApp'))
 
 function App() {
-  const user = useUser()
+  const userObj = useUser()
   // pre-load the authenticated side in the background while the user's
   // filling out the login form.
   React.useEffect(() => {
@@ -16,7 +16,7 @@ function App() {
   
   return (
     <React.Suspense fallback={<FullPageSpinner />}>
-      {user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+      {userObj.user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
     </React.Suspense>
   )
 }

@@ -31,7 +31,7 @@ module.exports = (router) => {
         if(result.success)
           return res.json({ success: true, message: 'OK - Success', data: { user: result.user.getUser(), token: result.user.getToken() } })
 
-        return res.json({ success: false, message: 'Unauthorized - Invalid userId.', data: {} })
+        return res.json({ success: false, message: result.message, data: { user: null } })
       })
     }
     catch(ex) {
@@ -46,7 +46,7 @@ module.exports = (router) => {
     mysql('users').where('Username', username).first().then((user) => new User(user)).then((user) => {
       if (user == null)  {
         res.status(401)
-        return res.json({ success: false, message: 'Unauthorized - Invalid username.', data: {} })
+        return res.json({ success: false, message: 'Unauthorized - Invalid username.', data: { user: null } })
       }
 
       return res.json({ user: user.getUser() })

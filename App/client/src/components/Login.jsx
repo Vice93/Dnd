@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
 import history from '../providers/HistoryProvider'
+import { Spinner, openSnackbar } from '../components/Lib'
 
 
 const useStyles = makeStyles(theme => ({
@@ -36,10 +37,18 @@ export default function Login() {
   const [pwInput, setPw] = useState('')
 
   const signIn = () => {
-    //Validate and show snackbar or smth: https://material-ui.com/components/snackbars/
-    console.log(unInput,  pwInput)
     if(unInput !== '' && pwInput !== '')
-      login({username: unInput, password: pwInput}).then(history.push('/'))
+      login({username: unInput, password: pwInput}).then((res) => {
+        if(res === undefined) // means we reloaded the page
+          history.push('/')
+        else
+          openSnackbar('error', res.message)
+      })
+  }
+
+  const enterPressed = (e) => {
+    if(e.key === 'Enter')
+      signIn()
   }
   
   return (
@@ -50,7 +59,7 @@ export default function Login() {
           <Face className="icon-size" />
         </Icon>
         <Typography component="h1">Sign in</Typography>
-        <FormControl className={classes.form}>
+        <FormControl className={classes.form} onKeyPress={enterPressed}>
           <TextField value={unInput} onInput={e => setUn(e.target.value)} autoFocus variant="outlined" margin="normal" required fullWidth id="username"
             label="Username" name="username" autoComplete="username" />
           <TextField value={pwInput} onInput={e => setPw(e.target.value)} variant="outlined" margin="normal" required fullWidth name="password"
@@ -60,12 +69,12 @@ export default function Login() {
           </Button>
           <Grid container className={classes.grid}>
             <Grid item xs>
-              <Button className={classes.button} type="submit" color="secondary" component={Link} to="/forgot-password">
+              <Button className={classes.button} color="secondary" component={Link} to="/forgot-password">
                 Forgot password?
               </Button>
             </Grid>
             <Grid item xs>
-              <Button className={classes.button} type="submit" color="secondary" component={Link} to="/register">
+              <Button className={classes.button} color="secondary" component={Link} to="/register">
                 No account?
             </Button>
             </Grid>

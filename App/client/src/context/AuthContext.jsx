@@ -38,7 +38,12 @@ function AuthProvider(props) {
       )
     }
   }
-  const login = form => authClient.login(form).then(reload)
+  const login = form => authClient.login(form).then((res) => {
+    if(res.user) // If user isnt null, it means login was successful. Reloading page means res is now undefined
+      reload()
+    else 
+      return res
+    })
   const register = form => authClient.register(form)
   const logout = () => authClient.logout().then(reload)
   return (
