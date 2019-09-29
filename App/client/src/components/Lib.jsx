@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import { IconButton, Snackbar, SnackbarContent } from '@material-ui/core'
 import { CheckCircle, Info, Warning, Close } from '@material-ui/icons'
 import ErrorIcon from '@material-ui/icons/Error'
-import { amber, green } from '@material-ui/core/colors'
+import { amber, green, red, indigo } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles'
 
 const snackbarIcons = {
@@ -20,10 +20,10 @@ const snackbarStyles = makeStyles(theme => ({
     backgroundColor: green[600],
   },
   error: {
-    backgroundColor: theme.palette.error.dark,
+    backgroundColor: red[700],
   },
   info: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: indigo[800],
   },
   warning: {
     backgroundColor: amber[700],
