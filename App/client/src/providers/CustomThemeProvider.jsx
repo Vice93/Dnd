@@ -43,22 +43,32 @@ const darkTheme = createMuiTheme({
     },
     MuiSvgIcon: {
       root: {
-        color: '#fff !important'
+        color: '#fff'
       }
     },
     MuiTypography: {
       root: {
-        color: '#fff !important'
+        color: '#fff'
       }
     },
     MuiDrawer: {
       paper: {
-        backgroundColor: '#303030 !important'
+        backgroundColor: '#303030'
       }
     },
     MuiMenu: {
       paper: {
-        backgroundColor: '#303030 !important'
+        backgroundColor: '#303030'
+      }
+    },
+    MuiCard: {
+      root: {
+        backgroundColor: '#303030'
+      }
+    },
+    MuiCardContent: {
+      root: {
+        color: '#fff'
       }
     }
   },
