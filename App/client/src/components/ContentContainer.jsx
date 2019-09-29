@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   },
   singleContainer: {
     height: '100%',
-    width: '100%',
+    maxWidth: '60%',
     margin: 'auto'
   },
   left: {

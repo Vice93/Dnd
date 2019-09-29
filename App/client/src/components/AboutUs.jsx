@@ -7,7 +7,6 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles(theme => ({
 	welcomeCard: {
 		textAlign: 'center',
-		maxWidth: '50%',
 		padding: 20,
 		margin: 'auto auto 20px auto'
 	},
@@ -15,7 +14,6 @@ const useStyles = makeStyles(theme => ({
 		textAlign: 'center',
 	},
 	card: {
-		maxWidth: '50%',
 		margin: 'auto'
 	},
 	cardContainer: {
@@ -58,7 +56,7 @@ export default function AboutUs() {
 						</li>
 				</CardContent>
 			</Card>
-			{/* <Container>
+			{/* <Container> //TODO: Implement some material alternative for this ? npm install material-ui-carousel --save
 				<Carousel>
 					<Carousel.Item>
 						<img
