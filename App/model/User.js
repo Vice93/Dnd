@@ -20,6 +20,7 @@ module.exports = class User {
   getUser() {
     return {
       id: this.Id,
+      username: this.Username,
       email: this.Email,
       createdDate: this.CreatedDate,
       updatedDate: this.UpdatedDate

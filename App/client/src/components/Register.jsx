@@ -131,7 +131,7 @@ export default function Register() {
 							!fieldErr.confirm && !isMatch &&
 							<FormHelperText error={true}>Password doesnt match</FormHelperText>
 						}
-						<Button type="submit" className={classes.margin} fullWidth variant="contained" color="primary" onClick={sendForm}>
+						<Button className={classes.margin} fullWidth variant="contained" color="primary" onClick={sendForm}>
 							Register
 						</Button>
 						<Grid container className={classes.grid}>

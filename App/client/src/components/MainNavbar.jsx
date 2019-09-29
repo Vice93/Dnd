@@ -4,10 +4,13 @@ import '../css/main.css'
 import { Link } from "react-router-dom";
 import { AppBar, Toolbar, Button } from '@material-ui/core';
 import { useAuth } from '../context/AuthContext'
+import { useUser } from '../context/UserContext'
 import history from '../providers/HistoryProvider'
 import SettingsMenu from './SettingsMenu'
 
 export default function MainNavbar(props) {
+  const {user} = useUser()
+  console.log(user)
 
   const { logout } = useAuth()
 
@@ -21,6 +24,10 @@ export default function MainNavbar(props) {
         <Sidebar isLoggedIn={props.isLoggedIn} />
         <Button component={Link} to="/" color="default">Home</Button>
         <div style={{ flex: 1 }}>{/*This is purely a spacer to push the button to the right*/}</div>
+        {
+          user !== null &&
+          'Signed in as ' + user.username
+        }
         <SettingsMenu toggleTheme={props.toggleTheme}/>
         {props.isLoggedIn
           ? <Button onClick={signOut} component={Link} to="/" variant="contained" color="secondary">Sign out</Button>

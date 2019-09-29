@@ -1,7 +1,7 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import { Menu, MenuItem, ListItemIcon, IconButton, ListItemText  } from '@material-ui/core'
-import { Send, MoreVert, InvertColors } from '@material-ui/icons'
+import { Send, MoreVert, InvertColors, AccountCircle } from '@material-ui/icons'
 
 const StyledMenu = withStyles({
   paper: {
@@ -67,9 +67,9 @@ export default function SettingsMenu(props) {
       >
         <StyledMenuItem>
           <ListItemIcon>
-            <Send />
+            <AccountCircle />
           </ListItemIcon>
-          <ListItemText primary="Sent mail" />
+          <ListItemText primary="Profile" />
         </StyledMenuItem>
         <StyledMenuItem>
           <ListItemIcon>

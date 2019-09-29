@@ -40,6 +40,26 @@ const darkTheme = createMuiTheme({
           color: "#aa00ff"
         }
       }
+    },
+    MuiSvgIcon: {
+      root: {
+        color: '#fff !important'
+      }
+    },
+    MuiTypography: {
+      root: {
+        color: '#fff !important'
+      }
+    },
+    MuiDrawer: {
+      paper: {
+        backgroundColor: '#303030 !important'
+      }
+    },
+    MuiMenu: {
+      paper: {
+        backgroundColor: '#303030 !important'
+      }
     }
   },
 });
