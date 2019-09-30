@@ -38,6 +38,11 @@ export default function Login() {
 	const [isLoading, setIsLoading] = useState(false)
 
   const signIn = () => {
+    if(isLoading) {
+      openSnackbar('info', 'Login is underway, please wait...')
+      return;
+    }
+
     if (unInput !== '' && pwInput !== '') {
       setIsLoading(true)
       login({ username: unInput, password: pwInput }).then((res) => {

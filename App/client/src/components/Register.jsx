@@ -42,6 +42,10 @@ export default function Register() {
 
 
 	const sendForm = () => {
+		if(isLoading){
+			openSnackbar('info', 'Register is underway, please wait...')
+		}
+
 		const formValid = validateForm()
 		const pwMatches = checkPasswordMatch()
 
