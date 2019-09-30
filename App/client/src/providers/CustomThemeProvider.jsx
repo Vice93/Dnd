@@ -23,6 +23,7 @@ const darkTheme = createMuiTheme({
       main: '#3c3c3c',
       contrastText: '#fff'
     },
+    gradient: 'linear-gradient(to right top, #1d2237, #28304c, #343e62, #404d78, #4c5c90)',
     contrastText: "#fff",
     iconColor: {
       color: "#fff"
@@ -94,6 +95,7 @@ const whiteTheme = createMuiTheme({
       main: '#e6e6e6',
       contrastText: '#000'
     },
+    gradient: 'linear-gradient(to right top, #1d2237, #28304c, #343e62, #404d78, #4c5c90)',
     contrastText: "#000",
     iconColor: {
       color: "#000"

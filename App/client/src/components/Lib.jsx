@@ -2,7 +2,8 @@ import React from 'react'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { IconButton, Snackbar, SnackbarContent, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
+import { IconButton, Snackbar, SnackbarContent, ListItem, ListItemIcon, 
+  ListItemText, Container, Card, CardActionArea, CardMedia, Typography } from '@material-ui/core'
 import { CheckCircle, Info, Warning, Close } from '@material-ui/icons'
 import ErrorIcon from '@material-ui/icons/Error'
 import { amber, green, red, indigo } from '@material-ui/core/colors'
@@ -145,7 +146,7 @@ export const openSnackbar = (variant, message) => {
  * 
  * Displays a spinner of the desired size. Default size 40
  */
-export const Spinner = ({size}) => {
+export const Spinner = ({ size }) => {
   return (
     <CircularProgress size={size} style={spinner} color="secondary" />
   )
@@ -170,7 +171,7 @@ export const FullPageSpinner = () => {
  * 
  * Creates a ListItem element.
  */
-export const CustomListItem = ({icon, name, value, multiLine}) => {
+export const CustomListItem = ({ icon, name, value, multiLine }) => {
   const style = {
     display: 'flex',
     flexDirection: multiLine ? 'column' : 'row'
@@ -183,11 +184,11 @@ export const CustomListItem = ({icon, name, value, multiLine}) => {
           {icon}
         </ListItemIcon>
       }
-      
+
       <div style={style}>
         {
           name &&
-          <ListItemText primary={name} style={{marginRight: '15px'}}/>
+          <ListItemText primary={name} style={{ marginRight: '15px' }} />
         }
         {
           value &&
@@ -196,4 +197,54 @@ export const CustomListItem = ({icon, name, value, multiLine}) => {
       </div>
     </ListItem>
   )
+}
+
+const gridStyles = makeStyles(theme => ({
+  card: {
+    textAlign: 'center',
+    margin: 10,
+    flexBasis: 0,
+    flexGrow: 1,
+    minWidth: '33%',
+    maxWidth: '47%'
+  },
+  media: {
+    height: 140,
+    backgroundSize: 'contain'
+  },
+  cardContainer: {
+    padding: 0,
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
+}))
+
+export const CustomGridList = ({elements}) => {
+  const style = gridStyles()
+  
+  return (
+
+    <Container fixed className={style.cardContainer}>
+      {
+        elements.map((elem, i) =>
+          <Card key={i} className={style.card}>
+            <CardActionArea style={{height: '100%'}}>
+              <CardMedia
+                className={style.media}
+                image={elem.image ? elem.image : 'logo512.png'} //some placeholder image
+                title={elem.imageTitle ? elem.imageTitle : 'An image'}
+              />
+              <Typography gutterBottom variant="h5" component="h2">
+                {elem.title ? elem.title : 'No title specified'}
+              </Typography>
+              <Typography variant="body2" component="p">
+                {elem.description ? elem.description : 'No content here yet...'}
+              </Typography>
+            </CardActionArea>
+          </Card>
+        )
+      }
+    </Container>
+  )
+
 }

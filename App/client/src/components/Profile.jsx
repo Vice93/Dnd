@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/styles'
 import { Edit, Email, AccountBox, Cake, Help } from '@material-ui/icons'
 import { useUser } from '../context/UserContext'
 import Moment from 'moment'
-import { CustomListItem } from './Lib'
+import { CustomListItem, CustomGridList } from './Lib'
 
 const useStyles = makeStyles(theme => ({
   background: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     height: '400px',
     width: '100%',
-    backgroundImage: 'url(https://vignette.wikia.nocookie.net/righteoushammerdd/images/b/b6/1454525543499.jpg/revision/latest?cb=20170709232137)',
+    backgroundImage: theme.palette.gradient, //or an image, banner can be anything really
     backgroundPosition: 'center',
     zIndex: -10
   },
@@ -33,12 +33,13 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column'
   },
   card: {
+    borderRadius: 15,
     margin: 10,
     backgroundColor: theme.palette.tertiary.main
   },
-  dummyHeight: {
-    height: '500px'
-  }
+  myCharsHeader: {
+    margin: '20px 0 0 20px'
+  },
 }))
 
 export default function Profile() {
@@ -82,11 +83,21 @@ export function ProfileInfo(classes, user) {
 }
 
 export function MyCharactersList(classes) {
-
+  const elems = [ //these are loaded from the database
+    {title: 'Salvador Diez', description: 'A hulk of a dwarf. This little guy is often mistaken for an ogre when he walks into towns.'}, 
+    {title: 'Gargantuan Smith', description: 'As the name would suggest, this is probably the most ordinary guy ever.'}, 
+    {title: 'Slayer of darkness', description: `Wields a fire katana with an edge that bleeds of shadow. Has burning red eyes and is more than capable of teleporting
+    right behind you. His catchphrase goes something like: 'Nothing personell, gnome.'`}, 
+    {title: `Knzh'thc glrash`, description: `No one really knows where this thing originated from. It's a small beaver looking thing that oozes green goo
+    when it shuffles along the floor. He wields a two handed greatsword 5 times the size of his body, so nobody really dares question his appearance. `}, 
+    {title: 'The leech', description: `A human that enjoys taking credit for everyone elses' achievements. He has never really done anything of worth himself, 
+    and takes great pride in being the greatest leech of them all. `}
+  ]
   return (
     <Card className={classes.card}>
+      <Typography gutterBottom className={classes.myCharsHeader} component="h4"><b>My characters</b></Typography>
       <CardContent className={classes.dummyHeight}>
-        Load characters in here maybe?
+        <CustomGridList elements={elems} />
       </CardContent>
     </Card>
   )
