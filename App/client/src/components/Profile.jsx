@@ -35,7 +35,6 @@ const useStyles = makeStyles(theme => ({
   card: {
     borderRadius: 15,
     margin: 10,
-    backgroundColor: theme.palette.tertiary.main
   },
   myCharsHeader: {
     margin: '20px 0 0 20px'

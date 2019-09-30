@@ -27,7 +27,8 @@ const darkTheme = createMuiTheme({
     contrastText: "#fff",
     iconColor: {
       color: "#fff"
-    }
+    },
+    gridCard: '#303030'
   },
   overrides: {
     MuiInputBase: {
@@ -68,7 +69,7 @@ const darkTheme = createMuiTheme({
     },
     MuiCard: {
       root: {
-        backgroundColor: '#303030'
+        backgroundColor: '#3c3c3c'
       }
     },
     MuiCardContent: {
@@ -84,7 +85,7 @@ const whiteTheme = createMuiTheme({
   palette: {
     type: "light",
     primary: {
-      main: '#6200EE',
+      main: '#360084',
       contrastText: '#FFF'
     },
     secondary: {
@@ -99,7 +100,8 @@ const whiteTheme = createMuiTheme({
     contrastText: "#000",
     iconColor: {
       color: "#000"
-    }
+    },
+    gridCard: '#fff'
   },
   overrides: {
     MuiInputBase: {
@@ -114,7 +116,12 @@ const whiteTheme = createMuiTheme({
       root: {
         color: '#fff'
       }
-    }
+    },
+    MuiCard: {
+      root: {
+        backgroundColor: '#f1f1f1'
+      }
+    },
   },
 });
 

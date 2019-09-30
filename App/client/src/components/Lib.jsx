@@ -206,7 +206,8 @@ const gridStyles = makeStyles(theme => ({
     flexBasis: 0,
     flexGrow: 1,
     minWidth: '33%',
-    maxWidth: '47%'
+    maxWidth: '47%',
+    backgroundColor: theme.palette.gridCard,
   },
   media: {
     height: 140,
