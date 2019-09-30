@@ -13,8 +13,8 @@ const app = express()
 * Use cors to allow cross-domain traffic (Frontend/Backend traffic). 
 */
 app.use(cors({
-  origin: [
-    'http://localhost:3000', // This is the domain and port react runs at during development
+  origin: [, 
+    `${appenv.domain}`,
     '<other ips you want to allow>',
   ],
   optionsSuccessStatus:200 // Optional, but you can define http status code for success here, 200 is the standard
