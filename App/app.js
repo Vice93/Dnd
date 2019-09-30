@@ -13,7 +13,7 @@ const app = express()
 * Use cors to allow cross-domain traffic (Frontend/Backend traffic). 
 */
 app.use(cors({
-  origin: [, 
+  origin: [
     `${appenv.domain}`,
     '<other ips you want to allow>',
   ],
