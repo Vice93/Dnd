@@ -35,7 +35,7 @@ export default function Test() {
   const classes = useStyles();
 
   return (
-    <ContentContainer contentRight={<Login />}>
+    <ContentContainer contentRight={<Login />} hideOnMinSize={true}>
       <Card className={classes.welcomeCard}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">Welcome to RollHub!</Typography>

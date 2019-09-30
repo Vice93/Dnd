@@ -8,6 +8,7 @@ import AboutUs from '../components/AboutUs'
 import LandingPage from '../components/LandingPage'
 import CustomThemeProvider from '../providers/CustomThemeProvider'
 import NotFound from '../components/NotFound'
+import Profile from '../components/Profile'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <MainNavbar isLoggedIn={true} />
         <Switch>
           <Route exact path="/" component={LandingPage} />
+          <Route path="/profile" component={Profile} />
           <Route path="/path" component={Test} />
           <Route path="/test" component={Test2} />
           <Route path="/about-us" component={AboutUs} />

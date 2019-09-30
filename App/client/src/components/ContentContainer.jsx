@@ -10,11 +10,17 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'row',
     minWidth: 800,
+    marginTop: '100px'
   },
   singleContainer: {
     height: '100%',
     maxWidth: '60%',
-    margin: 'auto'
+    margin: '100px auto'
+  },
+  singleContainerMaxWidth: {
+    height: '100%',
+    width: '100%',
+    margin: '100px auto'
   },
   left: {
     maxWidth: '61.8%',
@@ -59,9 +65,9 @@ export default function ContentContainer(props) {
       window.removeEventListener('resize', debouncedHandleResize)
   }})
   
-  let hideRight = (dimensions.width <= 800)
+  const minSize = (dimensions.width <= 800)
 
-  if(props.contentRight != null && !hideRight) {
+  if(props.contentRight != null && !minSize) {
     return (
       <Container className={classes.container}>
         <Container className={classes.left}>
@@ -74,7 +80,8 @@ export default function ContentContainer(props) {
     )
   }
   return (
-    <Container className={classes.singleContainer}>
+    <Container className={minSize ? classes.singleContainerMaxWidth : classes.singleContainer}>
+      {!props.hideOnMinSize && props.contentRight}
       {props.children}
     </Container>
   )

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Button, CardActionArea, Typography, Card, CardContent, Container, CardMedia } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
-import ContentContainer from './ContentContainer';
+import React from 'react'
+import { Button, CardActionArea, Typography, Card, CardContent, Container, CardMedia } from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
+import ContentContainer from './ContentContainer'
 
 const useStyles = makeStyles(theme => ({
   welcomeCard: {
@@ -20,10 +20,10 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
     display: 'flex'
   }
-}));
+}))
 
 export default function Test() {
-	const classes = useStyles();
+	const classes = useStyles()
   
   return (
     <ContentContainer>

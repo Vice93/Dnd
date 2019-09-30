@@ -10,7 +10,6 @@ import SettingsMenu from './SettingsMenu'
 
 export default function MainNavbar(props) {
   const {user} = useUser()
-  console.log(user)
 
   const { logout } = useAuth()
 
@@ -25,10 +24,10 @@ export default function MainNavbar(props) {
         <Button component={Link} to="/" color="default">Home</Button>
         <div style={{ flex: 1 }}>{/*This is purely a spacer to push the button to the right*/}</div>
         {
-          user !== null &&
-          'Signed in as ' + user.username
+          props.isLoggedIn &&
+          <div style={{userSelect: 'none'}}>Signed in as {user.username}</div>
         }
-        <SettingsMenu toggleTheme={props.toggleTheme}/>
+        <SettingsMenu toggleTheme={props.toggleTheme} isLoggedIn={props.isLoggedIn}/>
         {props.isLoggedIn
           ? <Button onClick={signOut} component={Link} to="/" variant="contained" color="secondary">Sign out</Button>
           : <Button component={Link} to="/login" variant="contained" color="secondary">Login</Button>}

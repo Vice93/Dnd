@@ -19,6 +19,10 @@ const darkTheme = createMuiTheme({
       main: '#aa00ff',
       contrastText: '#fff'
     },
+    tertiary:  {
+      main: '#3c3c3c',
+      contrastText: '#fff'
+    },
     contrastText: "#fff",
     iconColor: {
       color: "#fff"
@@ -84,6 +88,10 @@ const whiteTheme = createMuiTheme({
     },
     secondary: {
       main: '#03DAC6',
+      contrastText: '#000'
+    },
+    tertiary:  {
+      main: '#e6e6e6',
       contrastText: '#000'
     },
     contrastText: "#000",

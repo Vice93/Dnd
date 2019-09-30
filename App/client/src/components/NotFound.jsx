@@ -6,6 +6,7 @@ function NotFound() {
   return (
     <div
       style={{
+        marginTop: '10%',
         height: '100%',
         display: 'grid',
         alignItems: 'center',

@@ -1,7 +1,8 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
-import { Menu, MenuItem, ListItemIcon, IconButton, ListItemText  } from '@material-ui/core'
+import { Menu, MenuItem, ListItemIcon, IconButton, ListItemText } from '@material-ui/core'
 import { Send, MoreVert, InvertColors, AccountCircle } from '@material-ui/icons'
+import { Link } from 'react-router-dom'
 
 const StyledMenu = withStyles({
   paper: {
@@ -65,12 +66,14 @@ export default function SettingsMenu(props) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem>
-          <ListItemIcon>
-            <AccountCircle />
-          </ListItemIcon>
-          <ListItemText primary="Profile" />
-        </StyledMenuItem>
+        {props.isLoggedIn &&
+          <StyledMenuItem component={Link} to="/profile" >
+            <ListItemIcon>
+              <AccountCircle />
+            </ListItemIcon>
+            <ListItemText primary="Profile" />
+          </StyledMenuItem>
+        }
         <StyledMenuItem>
           <ListItemIcon>
             <Send />
