@@ -1,10 +1,11 @@
 import React from 'react'
 import ContentContainer from './ContentContainer'
-import { CardContent, Card, Typography, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
+import { CardContent, Card, Typography, List } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import { Edit, Email, AccountBox, Cake, Help } from '@material-ui/icons'
 import { useUser } from '../context/UserContext'
 import Moment from 'moment'
+import { CustomListItem } from './Lib'
 
 const useStyles = makeStyles(theme => ({
   background: {
@@ -60,7 +61,7 @@ export default function Profile() {
 export function ProfileInfo(classes, user) {
   Moment.locale('en')
   const date = Moment(user.createdDate).format('DD.MM.YYYY')
-  
+
   return (
     <Card className={classes.card}>
       <CardContent className={classes.profileInfoContainer}>
@@ -70,27 +71,13 @@ export function ProfileInfo(classes, user) {
 
         </div>
         <List>
-          {listItem(<Email />, 'Email:', user.email)}
-          {listItem(<AccountBox />, 'Username:', user.username)}
-          {listItem(<Cake />, 'Member since:', date)}
-          {listItem(<Help />, 'Some other field?:', 'some other value')}
+          <CustomListItem icon={<Email />} name={'Email: '} value={user.email} multiLine={true} />
+          <CustomListItem icon={<AccountBox />} name={'Username: '} value={user.username} multiLine={true} />
+          <CustomListItem icon={<Cake />} name={'Member since: '} value={date} multiLine={true} />
+          <CustomListItem icon={<Help />} name={'Some other field? '} value={'some other value'} multiLine={true} />
         </List>
       </CardContent>
     </Card>
-  )
-}
-
-function listItem(icon, name, value) {
-  return (
-    <ListItem>
-      <ListItemIcon>
-        {icon}
-      </ListItemIcon>
-      <div>
-        <ListItemText primary={name} />
-        <ListItemText primary={value} />
-      </div>
-    </ListItem>
   )
 }
 

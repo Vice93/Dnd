@@ -2,7 +2,7 @@ import React from 'react'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { IconButton, Snackbar, SnackbarContent } from '@material-ui/core'
+import { IconButton, Snackbar, SnackbarContent, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import { CheckCircle, Info, Warning, Close } from '@material-ui/icons'
 import ErrorIcon from '@material-ui/icons/Error'
 import { amber, green, red, indigo } from '@material-ui/core/colors'
@@ -88,22 +88,25 @@ SnackBarWrapper.propTypes = {
 
 let openSnackbarFn;
 
+/**
+ * The snackbar definition. Must be included at a top-level component for the snackbar to persist state changes.
+ */
 export const CustomSnackbar = () => {
-  const [state= { open: false, variant: 'info', message: ''}, setState] = React.useState()
+  const [state = { open: false, variant: 'info', message: '' }, setState] = React.useState()
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return
     }
 
-    setState({ open: false, variant: 'info', message: ''})
+    setState({ open: false, variant: 'info', message: '' })
   }
 
   const openSnackbar = (variant, message) => {
-    setState({ open: true, variant: variant, message: message})
+    setState({ open: true, variant: variant, message: message })
   }
 
-  
+
   openSnackbarFn = openSnackbar
 
   return (
@@ -125,21 +128,72 @@ export const CustomSnackbar = () => {
   )
 }
 
-export const openSnackbar =(variant, message) => {
+/**
+ * 
+ * @param {string} variant The type of snackbar to open. Available options are: 'success', 'info', 'warning', 'error'
+ * @param {*} message The message to display in the snackbar
+ * 
+ * Opens a snackbar with the specified settings.
+ */
+export const openSnackbar = (variant, message) => {
   openSnackbarFn(variant, message)
 }
 
-
-export const Spinner = (props) => {
+/**
+ * 
+ * @param {number} size The size of the spinner
+ * 
+ * Displays a spinner of the desired size. Default size 40
+ */
+export const Spinner = ({size}) => {
   return (
-    <CircularProgress size={props.size} style={spinner} color="secondary" />
+    <CircularProgress size={size} style={spinner} color="secondary" />
   )
 }
 
+/**
+ * Displays a big spinner in the middle (margin auto)
+ */
 export const FullPageSpinner = () => {
   return (
     <div style={fullSpinner}>
       <Spinner size={200} />
     </div>
+  )
+}
+
+/**
+ * @param {JSX} icon A JSX icon element to display on the list element
+ * @param {string} name The name of the listelement. Optional for a name/value pair, but at least name or value should be present
+ * @param {string} value The value of the listelement. Optional for a name/value pair, but at least name or value should be present
+ * @param {boolean} multiLine Wheter we display name/value in one line or two (flex row/column)
+ * 
+ * Creates a ListItem element.
+ */
+export const CustomListItem = ({icon, name, value, multiLine}) => {
+  const style = {
+    display: 'flex',
+    flexDirection: multiLine ? 'column' : 'row'
+  }
+  return (
+    <ListItem>
+      {
+        icon &&
+        <ListItemIcon>
+          {icon}
+        </ListItemIcon>
+      }
+      
+      <div style={style}>
+        {
+          name &&
+          <ListItemText primary={name} style={{marginRight: '15px'}}/>
+        }
+        {
+          value &&
+          <ListItemText primary={value} />
+        }
+      </div>
+    </ListItem>
   )
 }

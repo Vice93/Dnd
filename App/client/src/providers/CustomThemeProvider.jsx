@@ -116,6 +116,13 @@ const whiteTheme = createMuiTheme({
   },
 });
 
+/**
+ * 
+ * @param {children} props Contains the wrapped children.
+ * 
+ * A ThemeProvider wrapper which includes some additional functionality. A function to toggleTheme is passed down
+ * along with the cloned children.
+ */
 export default function CustomThemeProvider(props) {
   const savedTheme = getTheme()
   const [theme, setTheme] = React.useState(savedTheme)
